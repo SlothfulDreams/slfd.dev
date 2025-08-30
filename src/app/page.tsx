@@ -30,7 +30,7 @@ export default function Home() {
         {/* Terminal Windows Container */}
         <div className="relative z-10 w-2/3 sm:w-full max-w-6xl">
           {/* Mobile Layout (< 640px) */}
-          <div className="sm:hidden flex flex-col items-center gap-8 py-4">
+          <div className="sm:hidden flex flex-col items-center gap-4 py-2">
             <motion.div
               className="terminal-window w-11/12 max-w-sm"
               style={{ transform: "rotate(-0.5deg)" }}
@@ -130,11 +130,11 @@ export default function Home() {
                 <div className="w-10"></div>
               </div>
               <div className="terminal-content">
-                <div className="text-xs opacity-60 mb-3">
+                <div className="text-xs opacity-60 mb-2">
                   <span style={{ color: "#A7B7A7" }}>$</span>
                   <span style={{ color: "#E7DBD1" }}> neofetch</span>
                 </div>
-                <div className="mb-2 text-xs">
+                <div className="mb-1 text-xs">
                   <span style={{ color: "#A7B7A7", fontWeight: "bold" }}>
                     benson
                   </span>
@@ -144,45 +144,63 @@ export default function Home() {
                   </span>
                 </div>
                 <div
-                  className="mb-2 text-xs"
+                  className="mb-1 text-xs"
                   style={{ color: "rgba(167, 183, 167, 0.6)" }}
                 >
                   {"─".repeat(16)}
                 </div>
-                <div className="space-y-1 text-xs">
+                <div className="space-y-0.5 text-xs">
                   <div className="flex">
                     <span style={{ color: "#A7B7A7", minWidth: "60px" }}>
                       OS:
                     </span>
-                    <span style={{ color: "#E7DBD1" }}>Northeastern</span>
+                    <span style={{ color: "#E7DBD1" }}>Northeastern University</span>
                   </div>
                   <div className="flex">
                     <span style={{ color: "#A7B7A7", minWidth: "60px" }}>
-                      Major:
+                      Kernel:
                     </span>
-                    <span style={{ color: "#E7DBD1" }}>CS</span>
+                    <span style={{ color: "#E7DBD1" }}>Computer Science</span>
                   </div>
                   <div className="flex">
                     <span style={{ color: "#A7B7A7", minWidth: "60px" }}>
-                      Year:
+                      Shell:
                     </span>
-                    <span style={{ color: "#E7DBD1" }}>Sophomore</span>
+                    <span style={{ color: "#E7DBD1" }}>Sophomore Year</span>
                   </div>
                   <div className="flex">
                     <span style={{ color: "#A7B7A7", minWidth: "60px" }}>
                       Location:
                     </span>
-                    <span style={{ color: "#E7DBD1" }}>Boston</span>
+                    <span style={{ color: "#E7DBD1" }}>Boston, MA</span>
+                  </div>
+                  <div className="flex">
+                    <span style={{ color: "#A7B7A7", minWidth: "60px" }}>
+                      DE:
+                    </span>
+                    <span style={{ color: "#E7DBD1" }}>Full-stack Development</span>
+                  </div>
+                  <div className="flex">
+                    <span style={{ color: "#A7B7A7", minWidth: "60px" }}>
+                      CPU:
+                    </span>
+                    <span style={{ color: "#E7DBD1" }}>Sloth-powered Processor</span>
+                  </div>
+                  <div className="flex">
+                    <span style={{ color: "#A7B7A7", minWidth: "60px" }}>
+                      Memory:
+                    </span>
+                    <span style={{ color: "#E7DBD1" }}>32GB of Procrastination</span>
                   </div>
                 </div>
-                <div className="mt-3 flex gap-1 text-xs">
+                <div className="mt-2 flex gap-1 text-xs">
                   <span style={{ color: "#E7DBD1" }}>●</span>
                   <span style={{ color: "#A7B7A7" }}>●</span>
                   <span style={{ color: "#758B80" }}>●</span>
                   <span style={{ color: "#60696A" }}>●</span>
                   <span style={{ color: "#605B58" }}>●</span>
                 </div>
-                <div className="mt-4 text-xs opacity-60">
+                <div className="mt-2 text-xs opacity-60">
                   <span style={{ color: "#A7B7A7" }}>$</span>
                   <motion.span
                     animate={{ opacity: [1, 0] }}

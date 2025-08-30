@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#A7B7A7] px-6 py-4 mt-auto border-t border-black">
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
+    <footer className="w-full bg-[#A7B7A7] px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 py-4 mt-auto border-t border-black">
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
         <div className="text-white text-sm font-montserrat">
           © 2025 slfd.dev
         </div>
