@@ -7,8 +7,8 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="w-full bg-[#A7B7A7] px-6 py-4 border-b border-black">
-      <nav className="max-w-7xl mx-auto flex justify-between items-center">
+    <header className="w-full bg-[#A7B7A7] px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 py-4 border-b border-black">
+      <nav className="flex justify-between items-center">
         <Link href="/" className="text-white font-medium font-montserrat">
           slfd.dev
         </Link>
@@ -17,6 +17,9 @@ export default function Header() {
         <div className="hidden md:flex space-x-8 font-montserrat text-[#605B58]">
           <Link href="/about" className="hover:opacity-70 transition-opacity tracking-[0.1em]">
             about
+          </Link>
+          <Link href="/projects" className="hover:opacity-70 transition-opacity tracking-[0.1em]">
+            projects
           </Link>
           <Link href="/blogs" className="hover:opacity-70 transition-opacity tracking-[0.1em]">
             blogs
@@ -74,6 +77,18 @@ export default function Header() {
                 transition={{ duration: 0.3, delay: 0.2 }}
               >
                 <Link 
+                  href="/projects" 
+                  className="block px-6 py-3 text-[#605B58] hover:bg-[#758B80]/20 hover:text-[#E7DBD1] hover:border-l-4 hover:border-[#E7DBD1] hover:pl-8 transition-all duration-300 tracking-[0.1em] border-l-4 border-transparent"
+                >
+                  projects
+                </Link>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: 0.3 }}
+              >
+                <Link 
                   href="/blogs" 
                   className="block px-6 py-3 text-[#605B58] hover:bg-[#758B80]/20 hover:text-[#E7DBD1] hover:border-l-4 hover:border-[#E7DBD1] hover:pl-8 transition-all duration-300 tracking-[0.1em] border-l-4 border-transparent"
                 >
@@ -83,7 +98,7 @@ export default function Header() {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 0.3 }}
+                transition={{ duration: 0.3, delay: 0.4 }}
               >
                 <a 
                   href="/resume.pdf" 
@@ -97,7 +112,7 @@ export default function Header() {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 0.4 }}
+                transition={{ duration: 0.3, delay: 0.5 }}
               >
                 <Link 
                   href="/contact" 

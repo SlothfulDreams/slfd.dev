@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 
-export default function Contact() {
+export default function Projects() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -44,13 +44,13 @@ export default function Contact() {
                   style={{ backgroundColor: "rgba(117, 139, 128, 0.8)" }}
                 ></div>
               </div>
-              <span className="terminal-title">contact.sh</span>
+              <span className="terminal-title">projects.sh</span>
               <div className="w-16"></div>
             </div>
             
             <div className="terminal-content">
               <div className="text-[#A7B7A7] mb-4">
-                <span className="text-[#758B80]">$</span> cat ~/.contact
+                <span className="text-[#758B80]">$</span> git status
               </div>
               
               <div className="space-y-4">
@@ -58,67 +58,42 @@ export default function Contact() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
+                  className="text-[#A7B7A7]"
                 >
-                  <h1 className="text-2xl md:text-3xl text-[#E7DBD1] mb-4">
-                    Connect with me
-                  </h1>
+                  <p className="mb-2">On branch: main</p>
+                  <p className="mb-2">Your branch is up to date with 'origin/main'.</p>
+                  <p className="mb-4"></p>
+                  <p className="text-yellow-400 mb-2">Changes to be committed:</p>
+                  <p className="ml-4 text-green-400">new file: awesome_projects.js</p>
                 </motion.div>
 
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.5, duration: 0.5 }}
-                  className="text-[#A7B7A7] leading-relaxed space-y-3"
                 >
-                  <div className="text-[#A7B7A7] mb-2">
-                    <span className="text-[#758B80]">$</span> ls -la /dev/social
+                  <div className="text-[#A7B7A7] mb-4">
+                    <span className="text-[#758B80]">$</span> echo "Committing soon..."
                   </div>
-                  
-                  <div className="ml-4 space-y-2">
-                    <motion.a
-                      href="https://github.com/SlothfulDreams"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block text-[#A7B7A7] hover:text-[#E7DBD1] transition-colors"
-                      whileHover={{ x: 4 }}
-                    >
-                      <span className="text-[#758B80]">drwxr-xr-x</span>  github    <span className="text-[#E7DBD1] hover:underline">→ /github.com/SlothfulDreams</span>
-                    </motion.a>
-                    
-                    <motion.a
-                      href="https://www.linkedin.com/in/zhengbenson"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block text-[#A7B7A7] hover:text-[#E7DBD1] transition-colors"
-                      whileHover={{ x: 4 }}
-                    >
-                      <span className="text-[#758B80]">drwxr-xr-x</span>  linkedin  <span className="text-[#E7DBD1] hover:underline">→ /linkedin.com/in/zhengbenson</span>
-                    </motion.a>
-                    
-                    <motion.a
-                      href="mailto:zheng.ben@northeastern.edu"
-                      className="block text-[#A7B7A7] hover:text-[#E7DBD1] transition-colors"
-                      whileHover={{ x: 4 }}
-                    >
-                      <span className="text-[#758B80]">-rw-r--r--</span>  email     <span className="text-[#E7DBD1] hover:underline">→ zheng.ben@northeastern.edu</span>
-                    </motion.a>
-                  </div>
+                  <h1 className="text-2xl md:text-3xl text-[#E7DBD1] mb-4">
+                    Committing soon...
+                  </h1>
                 </motion.div>
 
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.7, duration: 0.5 }}
-                  className="mt-8 pt-8 border-t border-[#A7B7A7]/20"
+                  className="text-[#A7B7A7] leading-relaxed"
                 >
-                  <div className="text-[#A7B7A7] mb-4">
-                    <span className="text-[#758B80]">$</span> echo "Feel free to reach out!"
-                  </div>
-                  <p className="text-[#E7DBD1] mb-4">
-                    Feel free to reach out!
+                  <p className="mb-3">
+                    <span className="text-[#758B80]">→</span> Initializing repositories
                   </p>
-                  <p className="text-[#A7B7A7] text-sm">
-                    <span className="text-[#758B80]">response_time:</span> 24-48 hours
+                  <p className="mb-3">
+                    <span className="text-[#758B80]">→</span> Writing documentation
+                  </p>
+                  <p className="mb-3">
+                    <span className="text-[#758B80]">→</span> Pushing to production
                   </p>
                 </motion.div>
 
@@ -131,6 +106,36 @@ export default function Contact() {
                   <span className="ml-2">_</span>
                 </motion.div>
               </div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.9, duration: 0.5 }}
+                className="mt-8 pt-8 border-t border-[#A7B7A7]/20"
+              >
+                <div className="flex items-center justify-center space-x-3">
+                  <div className="flex space-x-1">
+                    <motion.div
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ duration: 1.5, repeat: Infinity, delay: 0 }}
+                      className="w-2 h-2 bg-[#A7B7A7] rounded-full"
+                    />
+                    <motion.div
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ duration: 1.5, repeat: Infinity, delay: 0.3 }}
+                      className="w-2 h-2 bg-[#A7B7A7] rounded-full"
+                    />
+                    <motion.div
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ duration: 1.5, repeat: Infinity, delay: 0.6 }}
+                      className="w-2 h-2 bg-[#A7B7A7] rounded-full"
+                    />
+                  </div>
+                  <span className="text-[#A7B7A7] text-sm">
+                    Building portfolio...
+                  </span>
+                </div>
+              </motion.div>
             </div>
           </div>
         </motion.div>
