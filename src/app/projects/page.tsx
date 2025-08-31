@@ -64,7 +64,7 @@ export default function Projects() {
                   <p className="mb-2">Your branch is up to date with 'origin/main'.</p>
                   <p className="mb-4"></p>
                   <p className="text-yellow-400 mb-2">Changes to be committed:</p>
-                  <p className="ml-4 text-green-400">new file: awesome_projects.js</p>
+                  <p className="ml-4 text-green-400">new file: slfd_projects.js</p>
                 </motion.div>
 
                 <motion.div
