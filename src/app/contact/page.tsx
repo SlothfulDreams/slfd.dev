@@ -60,7 +60,7 @@ export default function Contact() {
                   transition={{ delay: 0.3, duration: 0.5 }}
                 >
                   <h1 className="text-2xl md:text-3xl text-[#E7DBD1] mb-4">
-                    Connect with me
+                    Get in touch
                   </h1>
                 </motion.div>
 
@@ -112,10 +112,10 @@ export default function Contact() {
                   className="mt-8 pt-8 border-t border-[#A7B7A7]/20"
                 >
                   <div className="text-[#A7B7A7] mb-4">
-                    <span className="text-[#758B80]">$</span> echo "Feel free to reach out!"
+                    <span className="text-[#758B80]">$</span> echo "Feel free to reach out! Always happy to connect and chat."
                   </div>
                   <p className="text-[#E7DBD1] mb-4">
-                    Feel free to reach out!
+                    Feel free to reach out! Always happy to connect and chat.
                   </p>
                   <p className="text-[#A7B7A7] text-sm">
                     <span className="text-[#758B80]">response_time:</span> 24-48 hours
