@@ -1,7 +1,7 @@
 "use client";
-import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,6 +51,7 @@ export default function Header() {
 
         {/* Mobile Menu Button */}
         <button
+          type="button"
           className="md:hidden text-white font-montserrat"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
@@ -61,6 +62,7 @@ export default function Header() {
             stroke="currentColor"
             viewBox="0 0 24 24"
           >
+            <title>Toggle menu</title>
             {isMenuOpen ? (
               <path
                 strokeLinecap="round"

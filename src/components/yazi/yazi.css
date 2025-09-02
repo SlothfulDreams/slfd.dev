@@ -90,7 +90,7 @@
 .yazi-file-item.non-interactive:hover {
   background: transparent;
   border-left-color: transparent;
-  transform: none !important;
+  transform: none;
 }
 
 .yazi-file-icon {

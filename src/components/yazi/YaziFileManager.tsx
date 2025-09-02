@@ -1,18 +1,18 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
-import { 
-  Project, 
-  projects as allProjects,
+import { useEffect, useMemo, useState } from "react";
+import {
   aboutContent,
+  projects as allProjects,
   blogsContent,
-  contactContent 
+  contactContent,
+  type Project,
 } from "@/data/projects";
 import { FileListPane } from "./FileListPane";
 import { PreviewPane } from "./PreviewPane";
-import { StatusBar } from "./StatusBar";
 import { ProjectModal } from "./ProjectModal";
+import { StatusBar } from "./StatusBar";
 import "./yazi.css";
 
 interface YaziFileManagerProps {
@@ -20,9 +20,9 @@ interface YaziFileManagerProps {
   context?: "projects" | "about" | "blogs" | "contact";
 }
 
-export function YaziFileManager({ 
-  initialPath = [], 
-  context = "projects" 
+export function YaziFileManager({
+  initialPath = [],
+  context = "projects",
 }: YaziFileManagerProps) {
   const [currentPath, setCurrentPath] = useState<string[]>(initialPath);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -53,7 +53,7 @@ export function YaziFileManager({
       const folder = projects.find(
         (p) => p.name === pathSegment && p.type === "folder",
       );
-      if (folder && folder.children) {
+      if (folder?.children) {
         projects = folder.children;
       } else {
         // Path not found, reset to root
@@ -63,7 +63,7 @@ export function YaziFileManager({
     }
 
     return projects;
-  }, [currentPath]);
+  }, [currentPath, baseContent]);
 
   // Get global directory structure for left pane
   const globalDirectories = useMemo(() => {
@@ -76,28 +76,28 @@ export function YaziFileManager({
         description: "About page content",
         modified: new Date(),
         size: "3 items",
-        isActive: context === "about"
+        isActive: context === "about",
       },
       {
-        id: "projects-global", 
+        id: "projects-global",
         name: "projects",
         type: "folder" as const,
         icon: "📁",
         description: "Projects page content",
         modified: new Date(),
         size: "5 items",
-        isActive: context === "projects"
+        isActive: context === "projects",
       },
       {
         id: "blogs-global",
-        name: "blogs", 
+        name: "blogs",
         type: "folder" as const,
         icon: "📁",
         description: "Blogs page content",
         modified: new Date(),
         size: "3 items",
-        isActive: context === "blogs"
-      }
+        isActive: context === "blogs",
+      },
     ];
   }, [context]);
 
@@ -142,7 +142,7 @@ export function YaziFileManager({
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [currentPath, selectedProject]);
+  }, [currentPath, selectedProject, navigateInto, navigateUp]);
 
   // Auto-select first item when directory changes
   useEffect(() => {
@@ -217,7 +217,10 @@ export function YaziFileManager({
           />
         </div>
         <span className="terminal-title">
-          yazi - {currentPath.length > 0 ? `${context}/${currentPath.join("/")}` : context}
+          yazi -{" "}
+          {currentPath.length > 0
+            ? `${context}/${currentPath.join("/")}`
+            : context}
         </span>
         <div className="w-16" />
       </div>
@@ -225,11 +228,7 @@ export function YaziFileManager({
       {/* Three-pane layout */}
       <div className="yazi-panes">
         {/* Global directories pane */}
-        <FileListPane
-          title="~"
-          projects={globalDirectories}
-          currentPath={[]}
-        />
+        <FileListPane title="~" projects={globalDirectories} currentPath={[]} />
 
         {/* Current directory pane */}
         <FileListPane

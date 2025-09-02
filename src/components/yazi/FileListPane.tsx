@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import type { Project } from "@/data/projects";
 import "./yazi.css";
@@ -26,7 +25,6 @@ export function FileListPane({
   showParent = false,
   depth = 0,
 }: FileListPaneProps) {
-
   const getFileIcon = (project: Project) => {
     switch (project.type) {
       case "folder":
@@ -48,15 +46,14 @@ export function FileListPane({
     return "";
   };
 
-
   const handleClick = (project: Project, event: React.MouseEvent) => {
     event.preventDefault();
-    
+
     // Don't allow interaction with root context folders
-    if (project.id.endsWith('-root')) {
+    if (project.id.endsWith("-root")) {
       return;
     }
-    
+
     onSelect?.(project);
 
     // Navigate into folder on single click
@@ -67,10 +64,10 @@ export function FileListPane({
 
   const handleDoubleClick = (project: Project) => {
     // Don't allow opening root context folders
-    if (project.id.endsWith('-root')) {
+    if (project.id.endsWith("-root")) {
       return;
     }
-    
+
     if (project.type === "project" || project.type === "readme") {
       onOpen?.(project);
     } else if (project.type === "folder") {
@@ -100,54 +97,66 @@ export function FileListPane({
           onSelect?.(projects[currentIndex - 1]);
         }
         break;
-      case "Enter":
+      case "Enter": {
         event.preventDefault();
         const selectedProject = projects.find((p) => p.id === selectedId);
         if (selectedProject) {
           handleDoubleClick(selectedProject);
         }
         break;
+      }
     }
   };
 
   const renderProject = (project: Project, index: number) => {
-    const isContextRoot = project.id.endsWith('-root');
-    const isGlobalDir = project.id.endsWith('-global');
-    const isSelected = !isContextRoot && !isGlobalDir && project.id === selectedId;
-    const isActive = (project as any).isActive || false;
+    const isContextRoot = project.id.endsWith("-root");
+    const isGlobalDir = project.id.endsWith("-global");
+    const isSelected =
+      !isContextRoot && !isGlobalDir && project.id === selectedId;
+    const isActive =
+      (project as Project & { isActive?: boolean }).isActive || false;
     const isNonInteractive = isContextRoot || isGlobalDir;
 
     return (
       <div key={project.id}>
         <motion.div
           className={`yazi-file-item ${isSelected ? "selected" : ""} ${isActive ? "active" : ""} ${isNonInteractive ? "non-interactive" : ""}`}
-          style={{ 
-            "--depth": depth,
-            opacity: isActive ? 1 : (isGlobalDir ? 0.7 : 1)
-          } as React.CSSProperties}
+          style={
+            {
+              "--depth": depth,
+              opacity: isActive ? 1 : isGlobalDir ? 0.7 : 1,
+            } as React.CSSProperties
+          }
           onClick={(e) => !isNonInteractive && handleClick(project, e)}
           onDoubleClick={() => !isNonInteractive && handleDoubleClick(project)}
           initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: isActive ? 1 : (isGlobalDir ? 0.7 : 1), x: 0 }}
+          animate={{ opacity: isActive ? 1 : isGlobalDir ? 0.7 : 1, x: 0 }}
           transition={{ delay: index * 0.02 }}
           whileHover={!isNonInteractive ? { x: 2 } : {}}
         >
           <span className="yazi-file-icon">{getFileIcon(project)}</span>
-          <span className="yazi-file-name" style={{ 
-            fontWeight: isActive ? "bold" : "normal",
-            color: isActive ? "#A7B7A7" : undefined 
-          }}>
+          <span
+            className="yazi-file-name"
+            style={{
+              fontWeight: isActive ? "bold" : "normal",
+              color: isActive ? "#A7B7A7" : undefined,
+            }}
+          >
             {project.name}
           </span>
           <span className="yazi-file-size">{getFileSize(project)}</span>
         </motion.div>
-
       </div>
     );
   };
 
   return (
-    <div className="yazi-pane" tabIndex={0} onKeyDown={handleKeyDown}>
+    <div
+      className="yazi-pane"
+      role="listbox"
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+    >
       <div className="yazi-pane-header">
         {title}
         {currentPath.length > 0 && (

@@ -193,9 +193,12 @@ export function PreviewPane({ selectedProject }: PreviewPaneProps) {
                   .split("\n")
                   .slice(0, 8)
                   .map((line, idx) => (
-                    <div key={idx} style={{ marginBottom: "2px" }}>
+                    <div
+                      key={`${selectedProject.id}-line-${idx}-${line.slice(0, 10)}`}
+                      style={{ marginBottom: "2px" }}
+                    >
                       {line.length > 50
-                        ? line.substring(0, 47) + "..."
+                        ? `${line.substring(0, 47)}...`
                         : line || "\u00A0"}
                     </div>
                   ))}
