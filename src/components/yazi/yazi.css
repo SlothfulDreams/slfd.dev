@@ -1,0 +1,384 @@
+/* Yazi File Manager Specific Styles */
+
+.yazi-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: rgba(96, 91, 88, 0.98);
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: "SF Mono", "Monaco", "Menlo", "Consolas", monospace;
+}
+
+.yazi-panes {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  height: 100%;
+  border-top: 1px solid rgba(167, 183, 167, 0.2);
+}
+
+@media (max-width: 768px) {
+  .yazi-panes {
+    grid-template-columns: 1fr;
+  }
+
+  .yazi-pane:nth-child(1),
+  .yazi-pane:nth-child(3) {
+    display: none;
+  }
+}
+
+.yazi-pane {
+  border-right: 1px solid rgba(167, 183, 167, 0.2);
+  overflow-y: auto;
+  background: rgba(96, 91, 88, 0.5);
+}
+
+.yazi-pane:last-child {
+  border-right: none;
+}
+
+.yazi-pane-header {
+  padding: 8px 12px;
+  background: rgba(80, 75, 72, 0.8);
+  border-bottom: 1px solid rgba(167, 183, 167, 0.2);
+  color: rgba(231, 219, 209, 0.9);
+  font-size: 12px;
+  font-weight: 500;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.yazi-file-list {
+  padding: 4px 0;
+}
+
+.yazi-file-item {
+  display: flex;
+  align-items: center;
+  padding: 4px 12px;
+  cursor: pointer;
+  color: #e7dbd1;
+  font-size: 13px;
+  line-height: 1.4;
+  border-left: 3px solid transparent;
+  transition: all 0.15s ease;
+}
+
+.yazi-file-item:hover {
+  background: rgba(167, 183, 167, 0.15);
+  border-left-color: rgba(167, 183, 167, 0.4);
+}
+
+.yazi-file-item.selected {
+  background: rgba(167, 183, 167, 0.25);
+  border-left-color: #a7b7a7;
+  color: #e7dbd1;
+}
+
+.yazi-file-item.current-dir {
+  background: rgba(117, 139, 128, 0.2);
+  border-left-color: #758b80;
+}
+
+.yazi-file-item.non-interactive {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.yazi-file-item.non-interactive:hover {
+  background: transparent;
+  border-left-color: transparent;
+  transform: none !important;
+}
+
+.yazi-file-icon {
+  margin-right: 8px;
+  font-size: 14px;
+  min-width: 16px;
+  text-align: center;
+}
+
+.yazi-file-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.yazi-file-size {
+  font-size: 11px;
+  color: rgba(231, 219, 209, 0.6);
+  margin-left: 8px;
+}
+
+.yazi-folder-tree {
+  position: relative;
+}
+
+.yazi-folder-tree .yazi-file-item {
+  padding-left: calc(12px + var(--depth, 0) * 16px);
+}
+
+.yazi-folder-tree .yazi-file-item::before {
+  content: "";
+  position: absolute;
+  left: calc(8px + var(--depth, 0) * 16px);
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(167, 183, 167, 0.2);
+}
+
+.yazi-folder-expanded > .yazi-file-item::after {
+  content: "";
+  position: absolute;
+  left: calc(8px + var(--depth, 0) * 16px);
+  top: 50%;
+  width: 8px;
+  height: 1px;
+  background: rgba(167, 183, 167, 0.2);
+}
+
+.yazi-status-bar {
+  height: 24px;
+  background: rgba(80, 75, 72, 1);
+  border-top: 1px solid rgba(167, 183, 167, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  font-size: 11px;
+  color: rgba(231, 219, 209, 0.8);
+}
+
+.yazi-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.yazi-breadcrumb-item {
+  color: #a7b7a7;
+}
+
+.yazi-breadcrumb-separator {
+  color: rgba(231, 219, 209, 0.4);
+  margin: 0 2px;
+}
+
+.yazi-status-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Modal Styles */
+.yazi-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 20px;
+}
+
+.yazi-modal {
+  background: rgba(96, 91, 88, 0.98);
+  border: 1px solid rgba(167, 183, 167, 0.3);
+  border-radius: 8px;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(231, 219, 209, 0.05) inset;
+  max-width: 800px;
+  max-height: 80vh;
+  width: 100%;
+  overflow: hidden;
+  font-family: "SF Mono", "Monaco", "Menlo", "Consolas", monospace;
+}
+
+.yazi-modal-header {
+  height: 36px;
+  background: linear-gradient(
+    to bottom,
+    rgba(96, 91, 88, 1),
+    rgba(80, 75, 72, 1)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.yazi-modal-title {
+  color: rgba(231, 219, 209, 0.9);
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.yazi-modal-close {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(231, 219, 209, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  color: rgba(96, 91, 88, 1);
+}
+
+.yazi-modal-close:hover {
+  background: rgba(231, 219, 209, 1);
+  transform: scale(1.1);
+}
+
+.yazi-modal-content {
+  padding: 20px;
+  color: #e7dbd1;
+  font-size: 13px;
+  line-height: 1.6;
+  max-height: calc(80vh - 80px);
+  overflow-y: auto;
+}
+
+.yazi-modal-content h1 {
+  color: #a7b7a7;
+  font-size: 18px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(167, 183, 167, 0.2);
+  padding-bottom: 8px;
+}
+
+.yazi-modal-content h2 {
+  color: #a7b7a7;
+  font-size: 15px;
+  margin: 16px 0 8px 0;
+}
+
+.yazi-modal-content p {
+  margin-bottom: 12px;
+}
+
+.yazi-modal-content ul {
+  margin-left: 20px;
+  margin-bottom: 12px;
+}
+
+.yazi-modal-content li {
+  margin-bottom: 4px;
+}
+
+.yazi-modal-content code {
+  background: rgba(80, 75, 72, 0.6);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: inherit;
+}
+
+.yazi-modal-content pre {
+  background: rgba(80, 75, 72, 0.8);
+  padding: 12px;
+  border-radius: 6px;
+  margin: 12px 0;
+  overflow-x: auto;
+}
+
+.yazi-modal-content pre code {
+  background: none;
+  padding: 0;
+}
+
+.yazi-project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.yazi-tech-badge {
+  background: rgba(167, 183, 167, 0.2);
+  color: #a7b7a7;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  border: 1px solid rgba(167, 183, 167, 0.3);
+}
+
+.yazi-project-links {
+  display: flex;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.yazi-project-link {
+  color: #a7b7a7;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.yazi-project-link:hover {
+  color: #e7dbd1;
+}
+
+/* Preview pane specific styles */
+.yazi-preview-content {
+  padding: 12px;
+  font-size: 12px;
+  color: rgba(231, 219, 209, 0.8);
+  line-height: 1.5;
+}
+
+.yazi-preview-empty {
+  padding: 40px 12px;
+  text-align: center;
+  color: rgba(231, 219, 209, 0.4);
+  font-style: italic;
+}
+
+/* Keyboard shortcuts help */
+.yazi-shortcuts {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 10px;
+  color: rgba(231, 219, 209, 0.4);
+}
+
+/* Loading state */
+.yazi-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  color: rgba(231, 219, 209, 0.6);
+}
+
+.yazi-loading::after {
+  content: "";
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(167, 183, 167, 0.2);
+  border-top: 2px solid #a7b7a7;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-left: 8px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
