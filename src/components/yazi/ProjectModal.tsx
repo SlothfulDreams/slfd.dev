@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect } from "react";
-import { Project } from "@/data/projects";
+import type { Project } from "@/data/projects";
 import "./yazi.css";
 
 interface ProjectModalProps {

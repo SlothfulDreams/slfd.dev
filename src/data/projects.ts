@@ -44,7 +44,7 @@ I'm a passionate developer who loves building things with code.
 - 🌱 Learning new technologies
 - 👯 Looking to collaborate on open source`,
     modified: new Date("2024-12-01"),
-    size: "2.1KB"
+    size: "2.1KB",
   },
   {
     id: "experience",
@@ -69,7 +69,7 @@ I'm a passionate developer who loves building things with code.
   ]
 }`,
     modified: new Date("2024-11-20"),
-    size: "1.5KB"
+    size: "1.5KB",
   },
   {
     id: "skills",
@@ -95,8 +95,8 @@ tools:
   - Kubernetes
   - AWS/GCP`,
     modified: new Date("2024-11-15"),
-    size: "890B"
-  }
+    size: "890B",
+  },
 ];
 
 // Blogs page content
@@ -135,7 +135,7 @@ Terminal UIs are making a comeback in web design...
 - Command-line interactions`,
         modified: new Date("2024-11-30"),
         size: "4.2KB",
-        parent: "blog-folder"
+        parent: "blog-folder",
       },
       {
         id: "blog-2",
@@ -161,9 +161,9 @@ Learn how to make your React apps blazing fast...
 - Bundle analyzers`,
         modified: new Date("2024-11-15"),
         size: "3.8KB",
-        parent: "blog-folder"
-      }
-    ]
+        parent: "blog-folder",
+      },
+    ],
   },
   {
     id: "drafts",
@@ -187,10 +187,10 @@ Learn how to make your React apps blazing fast...
 Exploring the latest features in Next.js 15...`,
         modified: new Date("2024-12-02"),
         size: "1.2KB",
-        parent: "drafts"
-      }
-    ]
-  }
+        parent: "drafts",
+      },
+    ],
+  },
 ];
 
 // Contact page content
@@ -203,7 +203,7 @@ export const contactContent: Project[] = [
     description: "Email contact",
     content: `hello@slfd.dev`,
     modified: new Date("2024-12-01"),
-    size: "14B"
+    size: "14B",
   },
   {
     id: "social",
@@ -217,8 +217,8 @@ export const contactContent: Project[] = [
   "linkedin": "https://linkedin.com/in/slothy"
 }`,
     modified: new Date("2024-12-01"),
-    size: "156B"
-  }
+    size: "156B",
+  },
 ];
 
 export const projects: Project[] = [

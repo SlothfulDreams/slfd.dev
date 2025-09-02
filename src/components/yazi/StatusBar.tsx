@@ -42,7 +42,7 @@ export function StatusBar({
       <div className="yazi-breadcrumb">
         <span style={{ color: "rgba(231, 219, 209, 0.6)" }}>~/</span>
         {currentPath.map((segment, index) => (
-          <span key={index}>
+          <span key={`path-${index}-${segment}`}>
             <span className="yazi-breadcrumb-separator">/</span>
             <span className="yazi-breadcrumb-item">{segment}</span>
           </span>
