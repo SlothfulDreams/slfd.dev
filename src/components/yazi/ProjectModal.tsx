@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { useEffect } from "react";
 import type { Project } from "@/data/projects";
 import "./yazi.css";
@@ -35,37 +36,42 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   const renderContent = (content: string) => {
     // Simple markdown-like rendering
     return content.split("\n").map((line, i) => {
+      const lineKey = `line-${i}-${line.slice(0, 20)}`;
       if (line.startsWith("# ")) {
-        return <h1 key={i}>{line.substring(2)}</h1>;
+        return <h1 key={lineKey}>{line.substring(2)}</h1>;
       } else if (line.startsWith("## ")) {
-        return <h2 key={i}>{line.substring(3)}</h2>;
+        return <h2 key={lineKey}>{line.substring(3)}</h2>;
       } else if (line.startsWith("- ") || line.startsWith("* ")) {
         return (
-          <p key={i} style={{ marginLeft: "16px" }}>
+          <p key={lineKey} style={{ marginLeft: "16px" }}>
             • {line.substring(2)}
           </p>
         );
       } else if (line.startsWith("```")) {
         return (
           <div
-            key={i}
+            key={lineKey}
             style={{ color: "rgba(167, 183, 167, 0.6)", fontSize: "11px" }}
           >
             ---
           </div>
         );
       } else if (line.trim() === "") {
-        return <div key={i} style={{ height: "8px" }} />;
+        return <div key={lineKey} style={{ height: "8px" }} />;
       } else {
         // Handle inline code
         const parts = line.split("`");
         if (parts.length > 1) {
           const rendered = parts.map((part, idx) =>
-            idx % 2 === 0 ? part : <code key={idx}>{part}</code>,
+            idx % 2 === 0 ? (
+              part
+            ) : (
+              <code key={`code-${line}-${part}`}>{part}</code>
+            ),
           );
-          return <p key={i}>{rendered}</p>;
+          return <p key={lineKey}>{rendered}</p>;
         } else {
-          return <p key={i}>{line}</p>;
+          return <p key={lineKey}>{line}</p>;
         }
       }
     });
@@ -107,13 +113,21 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               <span className="yazi-modal-title">
                 {project.icon} {project.name}
               </span>
-              <div
+              <button
+                type="button"
                 className="yazi-modal-close"
                 onClick={onClose}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    onClose();
+                  }
+                }}
                 title="Close (ESC)"
+                aria-label="Close modal"
               >
                 ✕
-              </div>
+              </button>
             </div>
 
             <div className="yazi-modal-content">
@@ -173,18 +187,25 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                 <div style={{ marginTop: "20px" }}>
                   <h2>Screenshots</h2>
                   {project.screenshots.map((screenshot, idx) => (
-                    <div key={idx} style={{ margin: "12px 0" }}>
-                      <img
+                    <div
+                      key={`screenshot-${screenshot.replace(/[^a-zA-Z0-9]/g, "-")}`}
+                      style={{ margin: "12px 0" }}
+                    >
+                      <Image
                         src={screenshot}
                         alt={`${project.name} screenshot ${idx + 1}`}
+                        width={800}
+                        height={600}
                         style={{
                           maxWidth: "100%",
+                          height: "auto",
                           borderRadius: "4px",
                           border: "1px solid rgba(167, 183, 167, 0.2)",
                         }}
                         onError={(e) => {
                           (e.target as HTMLImageElement).style.display = "none";
                         }}
+                        unoptimized
                       />
                     </div>
                   ))}

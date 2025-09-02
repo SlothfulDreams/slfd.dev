@@ -429,7 +429,12 @@ export function getProjectPath(projectId: string): string[] {
   while (current) {
     path.unshift(current.name);
     if (current.parent) {
-      current = findProjectById(current.parent);
+      const parent = findProjectById(current.parent);
+      if (parent) {
+        current = parent;
+      } else {
+        break;
+      }
     } else {
       break;
     }
