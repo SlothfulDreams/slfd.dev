@@ -113,6 +113,25 @@ export function YaziFileManager({
     return selectedProject.children;
   }, [selectedProject]);
 
+  const navigateUp = () => {
+    if (currentPath.length > 0) {
+      const newPath = [...currentPath];
+      newPath.pop();
+      setCurrentPath(newPath);
+    }
+  };
+
+  const navigateInto = (project: Project) => {
+    if (project.id === "..") {
+      navigateUp();
+      return;
+    }
+
+    if (project.type === "folder") {
+      setCurrentPath([...currentPath, project.name]);
+    }
+  };
+
   // Handle keyboard navigation
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -157,25 +176,6 @@ export function YaziFileManager({
       setSelectedProject(currentProjects[0]);
     }
   }, [currentProjects, selectedProject]);
-
-  const navigateUp = () => {
-    if (currentPath.length > 0) {
-      const newPath = [...currentPath];
-      newPath.pop();
-      setCurrentPath(newPath);
-    }
-  };
-
-  const navigateInto = (project: Project) => {
-    if (project.id === "..") {
-      navigateUp();
-      return;
-    }
-
-    if (project.type === "folder") {
-      setCurrentPath([...currentPath, project.name]);
-    }
-  };
 
   const handleSelect = (project: Project) => {
     setSelectedProject(project);
