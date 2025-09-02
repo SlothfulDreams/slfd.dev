@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   aboutContent,
   projects as allProjects,
@@ -113,24 +113,27 @@ export function YaziFileManager({
     return selectedProject.children;
   }, [selectedProject]);
 
-  const navigateUp = () => {
+  const navigateUp = useCallback(() => {
     if (currentPath.length > 0) {
       const newPath = [...currentPath];
       newPath.pop();
       setCurrentPath(newPath);
     }
-  };
+  }, [currentPath]);
 
-  const navigateInto = (project: Project) => {
-    if (project.id === "..") {
-      navigateUp();
-      return;
-    }
+  const navigateInto = useCallback(
+    (project: Project) => {
+      if (project.id === "..") {
+        navigateUp();
+        return;
+      }
 
-    if (project.type === "folder") {
-      setCurrentPath([...currentPath, project.name]);
-    }
-  };
+      if (project.type === "folder") {
+        setCurrentPath([...currentPath, project.name]);
+      }
+    },
+    [currentPath, navigateUp],
+  );
 
   // Handle keyboard navigation
   useEffect(() => {
