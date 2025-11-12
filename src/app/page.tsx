@@ -171,9 +171,7 @@ export default function Home() {
                   <span style={{ color: "#A7B7A7", minWidth: "60px" }}>
                     DE:
                   </span>
-                  <span style={{ color: "#E7DBD1" }}>
-                    Full-stack Development
-                  </span>
+                  <span style={{ color: "#E7DBD1" }}>AI Engineer</span>
                 </div>
                 <div className="flex">
                   <span style={{ color: "#A7B7A7", minWidth: "60px" }}>
@@ -426,9 +424,7 @@ export default function Home() {
                       >
                         DE:
                       </span>
-                      <span style={{ color: "#E7DBD1" }}>
-                        Full-stack Development
-                      </span>
+                      <span style={{ color: "#E7DBD1" }}>AI Engineer</span>
                     </div>
                     <div className="flex">
                       <span
