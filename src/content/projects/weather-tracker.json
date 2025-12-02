@@ -1,0 +1,12 @@
+{
+  "id": "weather-app",
+  "name": "weather-tracker.md",
+  "type": "readme",
+  "icon": "📄",
+  "description": "React Native weather application",
+  "content": "# Weather Tracker\n\nBeautiful weather app with detailed forecasts and location tracking.\n\n## Features\n- 🌍 Global weather data\n- 📍 GPS location detection\n- 📈 7-day forecasts\n- 🌈 Beautiful weather animations\n- 💾 Offline support\n\n## Technical Details\n- Built with React Native\n- Weather API integration\n- Async storage for offline data\n- Custom animations with Reanimated\n\n## Links\n- 📂 GitHub: https://github.com/slothy/weather-tracker",
+  "tech": ["React Native", "TypeScript", "Async Storage", "Reanimated"],
+  "github": "https://github.com/slothy/weather-tracker",
+  "modified": "2024-10-15",
+  "size": "12MB"
+}

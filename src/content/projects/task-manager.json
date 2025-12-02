@@ -1,0 +1,13 @@
+{
+  "id": "task-manager",
+  "name": "task-manager.md",
+  "type": "readme",
+  "icon": "📄",
+  "description": "Full-stack task management application",
+  "content": "# Task Manager Pro\n\nA comprehensive task management application with real-time collaboration.\n\n## Features\n- 📝 Create, edit, and organize tasks\n- 👥 Team collaboration\n- 📊 Progress tracking\n- 🔔 Real-time notifications\n- 📱 Mobile-first design\n\n## Architecture\n- Frontend: React with TypeScript\n- Backend: Node.js + Express\n- Database: PostgreSQL\n- Real-time: Socket.io\n- Authentication: JWT\n\n## Links\n- 📂 GitHub: https://github.com/slothy/task-manager\n- 🌐 Demo: https://tasks.slfd.dev",
+  "tech": ["React", "Node.js", "PostgreSQL", "Socket.io", "TypeScript"],
+  "github": "https://github.com/slothy/task-manager",
+  "demo": "https://tasks.slfd.dev",
+  "modified": "2024-11-20",
+  "size": "5.7MB"
+}

@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   aboutContent,
-  projects as allProjects,
   blogsContent,
   contactContent,
   type Project,
@@ -27,6 +26,30 @@ export function YaziFileManager({
   const [currentPath, setCurrentPath] = useState<string[]>(initialPath);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [modalProject, setModalProject] = useState<Project | null>(null);
+  const [dynamicProjects, setDynamicProjects] = useState<Project[]>([]);
+  const [isLoading, setIsLoading] = useState(context === "projects");
+
+  // Fetch projects dynamically when context is "projects"
+  useEffect(() => {
+    if (context === "projects") {
+      setIsLoading(true);
+      fetch("/api/projects")
+        .then((res) => res.json())
+        .then((data) => {
+          // Convert ISO date strings back to Date objects
+          const projects = data.map((p: Project & { modified: string }) => ({
+            ...p,
+            modified: new Date(p.modified),
+          }));
+          setDynamicProjects(projects);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          console.error("Failed to load projects:", err);
+          setIsLoading(false);
+        });
+    }
+  }, [context]);
 
   // Get the base content based on context
   const getBaseContent = () => {
@@ -38,7 +61,7 @@ export function YaziFileManager({
       case "contact":
         return contactContent;
       default:
-        return allProjects;
+        return dynamicProjects;
     }
   };
 
@@ -242,6 +265,7 @@ export function YaziFileManager({
           onOpen={handleOpen}
           currentPath={currentPath}
           showParent={currentPath.length > 0}
+          isLoading={isLoading}
         />
 
         {/* Preview/child directory pane */}

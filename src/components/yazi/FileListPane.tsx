@@ -13,6 +13,7 @@ interface FileListPaneProps {
   currentPath?: string[];
   showParent?: boolean;
   depth?: number;
+  isLoading?: boolean;
 }
 
 export function FileListPane({
@@ -24,6 +25,7 @@ export function FileListPane({
   currentPath = [],
   showParent = false,
   depth = 0,
+  isLoading = false,
 }: FileListPaneProps) {
   const getFileIcon = (project: Project) => {
     switch (project.type) {
@@ -190,7 +192,24 @@ export function FileListPane({
 
         {projects.map((project, index) => renderProject(project, index))}
 
-        {projects.length === 0 && (
+        {isLoading && (
+          <div
+            style={{
+              padding: "40px 12px",
+              textAlign: "center",
+              color: "rgba(167, 183, 167, 0.8)",
+            }}
+          >
+            <motion.div
+              animate={{ opacity: [0.4, 1, 0.4] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              Loading projects...
+            </motion.div>
+          </div>
+        )}
+
+        {!isLoading && projects.length === 0 && (
           <div
             style={{
               padding: "40px 12px",

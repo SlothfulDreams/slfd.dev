@@ -1,0 +1,10 @@
+{
+  "id": "readme",
+  "name": "README.md",
+  "type": "readme",
+  "icon": "📄",
+  "description": "About my projects",
+  "content": "# My Projects 🚀\n\nWelcome to my project collection! Here you'll find documentation for various web applications, mobile apps, and open-source contributions.\n\n## Featured Projects\n\n### Portfolio Website\nA modern, responsive portfolio website built with Next.js 15, TypeScript, and Tailwind CSS.\n\n### Task Manager Pro  \nFull-stack task management application with real-time collaboration features.\n\n### Weather Tracker\nReact Native weather application with beautiful animations and offline support.\n\n### React Terminal UI\nOpen-source React component library for creating terminal-inspired interfaces.\n\n## Tech Stack Preferences\n- **Frontend**: React, Next.js, TypeScript\n- **Backend**: Node.js, Python, PostgreSQL\n- **Mobile**: React Native, Flutter\n- **Tools**: Git, Docker, AWS\n\n## Contact\nFeel free to reach out for collaborations or questions about any projects!",
+  "modified": "2024-12-01",
+  "size": "1.2KB"
+}
