@@ -1,11 +1,24 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
 import { useEffect, useState } from "react";
 import { ActivityCalendar } from "react-activity-calendar";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { profile } from "@/data/profile";
+
+const ImageDithering = dynamic(
+  () => import("@paper-design/shaders-react").then((m) => m.ImageDithering),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full h-full bg-[var(--color-surface)] rounded-[8px]" />
+    ),
+  },
+);
 
 interface ContributionDay {
   date: string;
@@ -15,15 +28,17 @@ interface ContributionDay {
 
 function GitHubHeatmap() {
   const [data, setData] = useState<ContributionDay[]>([]);
-  const [total, setTotal] = useState(0);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     fetch("/api/github")
       .then((res) => res.json())
-      .then(({ contributions, totalContributions }) => {
+      .then(({ contributions }) => {
         if (contributions.length > 0) {
           setData(contributions);
-          setTotal(totalContributions);
         }
       })
       .catch(() => {});
@@ -31,17 +46,23 @@ function GitHubHeatmap() {
 
   if (data.length === 0) return null;
 
-  const year = new Date().getFullYear();
+  const heatmapTheme =
+    mounted && resolvedTheme === "dark"
+      ? {
+          light: ["#313244", "#45475A", "#585B70", "#A6ADC8", "#CDD6F4"],
+          dark: ["#313244", "#45475A", "#585B70", "#A6ADC8", "#CDD6F4"],
+        }
+      : {
+          light: ["#E6E9EF", "#BCC0CC", "#9CA0B0", "#6C6F85", "#4C4F69"],
+          dark: ["#E6E9EF", "#BCC0CC", "#9CA0B0", "#6C6F85", "#4C4F69"],
+        };
 
   return (
     <div className="mb-6">
       <div className="overflow-x-auto">
         <ActivityCalendar
           data={data}
-          theme={{
-            dark: ["#f4f4f5", "#d4d4d8", "#a1a1aa", "#52525b", "#18181b"],
-            light: ["#f4f4f5", "#d4d4d8", "#a1a1aa", "#52525b", "#18181b"],
-          }}
+          theme={heatmapTheme}
           blockSize={10}
           blockRadius={2}
           blockMargin={3}
@@ -51,7 +72,7 @@ function GitHubHeatmap() {
             totalCount: "{{count}} activities in {{year}}",
           }}
           style={{
-            color: "#1a1c1d",
+            color: "var(--color-on-surface)",
           }}
         />
       </div>
@@ -120,7 +141,33 @@ export function HeroSection() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="flex items-end gap-5 mb-6">
+      {/* Top spacer with dotted line */}
+      <div className="dotted-divider" />
+
+      {/* Banner */}
+      <div className="w-full h-36 rounded-[8px] overflow-hidden">
+        <ImageDithering
+          width={750}
+          height={144}
+          image="/images/banner.jpg"
+          colorBack="#000000"
+          colorFront="#ffffff"
+          colorHighlight="#ffffff"
+          originalColors
+          inverted={false}
+          type="8x8"
+          size={2}
+          colorSteps={4}
+          fit="cover"
+          offsetY={0.26}
+          style={{ width: "100%", height: "100%" }}
+        />
+      </div>
+
+      <div className="dotted-divider" />
+
+      {/* Avatar + Name */}
+      <div className="relative flex items-end gap-5 mb-6">
         <Image
           src={profile.avatar}
           alt={profile.name}
@@ -129,13 +176,16 @@ export function HeroSection() {
           className="rounded-[6px] shrink-0"
           unoptimized
         />
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-[#000]">
+        <div className="flex-1">
+          <h1 className="text-2xl font-bold tracking-tight text-[var(--color-primary)]">
             {profile.name}
           </h1>
-          <p className="text-sm text-[#6e7072] font-[family-name:var(--font-inter)]">
+          <p className="text-sm text-[var(--color-on-surface-variant)] font-[family-name:var(--font-inter)]">
             {profile.title} &middot; <RotatingSubtitle />
           </p>
+        </div>
+        <div className="absolute top-0 right-0">
+          <ThemeToggle />
         </div>
       </div>
 
@@ -143,12 +193,7 @@ export function HeroSection() {
       <div className="dotted-divider" />
       <div className="mb-6">
         <span className="section-label mb-3 block">Socials</span>
-        <div
-          className="h-px mb-3"
-          style={{
-            background: `repeating-linear-gradient(to right, var(--dot-color) 0px, var(--dot-color) 4px, transparent 4px, transparent 10px)`,
-          }}
-        />
+        <div className="dotted-line mb-3" />
         <div className="flex flex-wrap gap-2 mb-4">
           {profile.socials.map((social) => (
             <a
@@ -156,7 +201,7 @@ export function HeroSection() {
               href={social.href}
               target={social.icon === "email" ? undefined : "_blank"}
               rel={social.icon === "email" ? undefined : "noopener noreferrer"}
-              className="flex items-center group gap-1.5 px-2.5 py-1.5 border border-[#c4c6c8] hover:border-[#6e7072] bg-transparent transition-colors duration-200 select-none rounded-[6px] font-mono text-[11px] text-[#6e7072] hover:text-[#1a1c1d]"
+              className="flex items-center group gap-1.5 px-2.5 py-1.5 border border-[var(--color-outline-variant)] hover:border-[var(--color-on-surface-variant)] bg-transparent transition-colors duration-200 select-none rounded-[6px] font-mono text-[11px] text-[var(--color-on-surface-variant)] hover:text-[var(--color-on-surface)]"
             >
               {socialIcons[social.icon]}
               {social.label}

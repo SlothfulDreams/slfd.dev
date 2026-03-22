@@ -9,7 +9,7 @@ import { SkillsSection } from "@/components/sections/SkillsSection";
 
 export default function Home() {
   return (
-    <main className="content-column pt-44 pb-24">
+    <main className="content-column pt-8 pb-24">
       <HeroSection />
       <DottedDivider />
       <ExperienceSection />

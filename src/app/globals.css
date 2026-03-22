@@ -1,43 +1,82 @@
 @import "tailwindcss";
 
 :root {
-  /* Core palette */
-  --color-primary: #000000;
-  --color-background: #fafafa;
-  --color-on-surface: #1a1c1d;
-  --color-on-surface-variant: #6e7072;
-  --color-outline-variant: #c4c6c8;
+  /* Core palette — Catppuccin Latte */
+  --color-primary: #4c4f69;
+  --color-background: #eff1f5;
+  --color-on-surface: #4c4f69;
+  --color-on-surface-variant: #6c6f85;
+  --color-outline-variant: #9ca0b0;
+  --color-surface: #e6e9ef;
+  --color-accent: #7287fd;
+  --color-on-accent: #eff1f5;
 
   /* Dotted line system */
-  --dot-color: #b0b3b5;
+  --dot-color: #9ca0b0;
   --dot-dash: 6px;
   --dot-gap: 14px;
 
   /* Grid background */
-  --grid-color: rgba(0, 0, 0, 0.08);
+  --grid-color: rgba(76, 79, 105, 0.08);
   --grid-size: 48px;
+
+  /* Surfaces */
+  --gradient-overlay: rgba(76, 79, 105, 0.03);
 
   /* Layout */
   --content-width: 750px;
   --content-padding: 1.5rem;
 }
 
+.dark {
+  /* Core palette — Catppuccin Mocha */
+  --color-primary: #cdd6f4;
+  --color-background: #1e1e2e;
+  --color-on-surface: #cdd6f4;
+  --color-on-surface-variant: #a6adc8;
+  --color-outline-variant: #585b70;
+  --color-surface: #313244;
+  --color-accent: #b4befe;
+  --color-on-accent: #1e1e2e;
+  --dot-color: #585b70;
+  --grid-color: rgba(205, 214, 244, 0.06);
+  --gradient-overlay: rgba(205, 214, 244, 0.02);
+}
+
 @theme inline {
   --color-background: var(--color-background);
   --color-foreground: var(--color-on-surface);
   --font-sans: var(--font-inter);
-  --font-mono: 'SF Mono', 'Fira Code', 'JetBrains Mono', 'Cascadia Code', monospace;
+  --font-mono:
+    "SF Mono", "Fira Code", "JetBrains Mono", "Cascadia Code", monospace;
 }
 
 body {
   background-color: var(--color-background);
   background-image:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,0,0,0.03) 0%, transparent 100%),
-    repeating-linear-gradient(to right, var(--grid-color) 0px, var(--grid-color) 1px, transparent 1px, transparent var(--grid-size)),
-    repeating-linear-gradient(to bottom, var(--grid-color) 0px, var(--grid-color) 1px, transparent 1px, transparent var(--grid-size));
+    radial-gradient(
+      ellipse 80% 50% at 50% 0%,
+      var(--gradient-overlay) 0%,
+      transparent 100%
+    ),
+    repeating-linear-gradient(
+      to right,
+      var(--grid-color) 0px,
+      var(--grid-color) 1px,
+      transparent 1px,
+      transparent var(--grid-size)
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      var(--grid-color) 0px,
+      var(--grid-color) 1px,
+      transparent 1px,
+      transparent var(--grid-size)
+    );
   color: var(--color-on-surface);
   font-family: var(--font-inter), "Inter", sans-serif;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* ── Centered column with flanking dotted borders ── */
@@ -51,7 +90,7 @@ body {
 
 .content-column::before,
 .content-column::after {
-  content: '';
+  content: "";
   position: fixed;
   top: 0;
   bottom: 0;
@@ -85,7 +124,6 @@ body {
 /* ── Dotted divider ── */
 
 .dotted-divider {
-  width: 100%;
   height: 1px;
   background: repeating-linear-gradient(
     to right,
@@ -95,6 +133,23 @@ body {
     transparent var(--dot-gap)
   );
   margin: 2.5rem 0;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ── Thin dotted line (used inside sections) ── */
+
+.dotted-line {
+  height: 1px;
+  background: repeating-linear-gradient(
+    to right,
+    var(--dot-color) 0px,
+    var(--dot-color) 4px,
+    transparent 4px,
+    transparent 10px
+  );
 }
 
 /* ── Section label ── */
@@ -125,9 +180,13 @@ body {
   padding: 1.25rem;
 }
 
-.project-grid > *:not(:nth-last-child(-n+2)) {
+.project-grid > *:not(:nth-last-child(-n + 2)) {
   background-image: repeating-linear-gradient(
-    to right, var(--dot-color) 0px, var(--dot-color) 4px, transparent 4px, transparent 10px
+    to right,
+    var(--dot-color) 0px,
+    var(--dot-color) 4px,
+    transparent 4px,
+    transparent 10px
   );
   background-size: 100% 1px;
   background-position: bottom;
@@ -137,7 +196,11 @@ body {
 @media (max-width: 640px) {
   .project-grid > *:not(:last-child) {
     background-image: repeating-linear-gradient(
-      to right, var(--dot-color) 0px, var(--dot-color) 4px, transparent 4px, transparent 10px
+      to right,
+      var(--dot-color) 0px,
+      var(--dot-color) 4px,
+      transparent 4px,
+      transparent 10px
     );
     background-size: 100% 1px;
     background-position: bottom;
@@ -148,16 +211,34 @@ body {
 @media (min-width: 641px) {
   .project-grid > *:nth-child(odd) {
     background-image:
-      repeating-linear-gradient(to right, var(--dot-color) 0px, var(--dot-color) 4px, transparent 4px, transparent 10px),
-      repeating-linear-gradient(to bottom, var(--dot-color) 0px, var(--dot-color) 4px, transparent 4px, transparent 10px);
-    background-size: 100% 1px, 1px 100%;
+      repeating-linear-gradient(
+        to right,
+        var(--dot-color) 0px,
+        var(--dot-color) 4px,
+        transparent 4px,
+        transparent 10px
+      ),
+      repeating-linear-gradient(
+        to bottom,
+        var(--dot-color) 0px,
+        var(--dot-color) 4px,
+        transparent 4px,
+        transparent 10px
+      );
+    background-size:
+      100% 1px,
+      1px 100%;
     background-position: bottom, right;
     background-repeat: no-repeat;
   }
 
   .project-grid > *:nth-last-child(2):nth-child(odd) {
     background-image: repeating-linear-gradient(
-      to bottom, var(--dot-color) 0px, var(--dot-color) 4px, transparent 4px, transparent 10px
+      to bottom,
+      var(--dot-color) 0px,
+      var(--dot-color) 4px,
+      transparent 4px,
+      transparent 10px
     );
     background-size: 1px 100%;
     background-position: right;
@@ -176,7 +257,7 @@ body {
   align-items: center;
   justify-content: center;
   background: var(--color-primary);
-  color: #ffffff;
+  color: var(--color-on-accent);
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   text-transform: uppercase;
@@ -203,7 +284,9 @@ body {
   padding: 0.5rem 1.25rem;
   border-radius: 0.25rem;
   border: 1px solid var(--color-outline-variant);
-  transition: border-color 0.2s ease, color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .btn-outline:hover {
@@ -222,7 +305,9 @@ body {
   color: var(--color-on-surface-variant);
   border: 1px solid var(--color-outline-variant);
   border-radius: 0.25rem;
-  transition: color 0.2s, border-color 0.2s;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
 }
 
 .skill-tag:hover {
@@ -257,6 +342,32 @@ body {
 }
 
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
-  50% { opacity: 0.8; box-shadow: 0 0 0 4px rgba(34, 197, 94, 0); }
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0);
+  }
+}
+
+/* ── Theme toggle circular reveal ── */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  clip-path: circle(0px at var(--toggle-x) var(--toggle-y));
+  animation: theme-reveal 0.5s ease-in-out forwards;
+}
+
+@keyframes theme-reveal {
+  to {
+    clip-path: circle(var(--toggle-radius) at var(--toggle-x) var(--toggle-y));
+  }
 }

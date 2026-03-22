@@ -17,7 +17,7 @@ export function SkillsSection() {
       <div className="space-y-4">
         {skills.map((group) => (
           <div key={group.category}>
-            <p className="font-mono text-[10px] text-[#c4c6c8] uppercase tracking-[0.15em] mb-2">
+            <p className="font-mono text-[10px] text-[var(--color-outline-variant)] uppercase tracking-[0.15em] mb-2">
               {group.category}
             </p>
             <div className="flex flex-wrap gap-2">

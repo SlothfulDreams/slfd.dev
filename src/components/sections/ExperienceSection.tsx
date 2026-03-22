@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { experiences } from "@/data/experience";
 import { SectionHeader } from "./SectionHeader";
@@ -15,7 +15,7 @@ export function ExperienceSection() {
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5 }}
     >
-      <SectionHeader label="Experience" />
+      <SectionHeader label="Experience" viewAllHref="/experience" />
 
       <div className="space-y-0">
         {experiences.map((exp, i) => {
@@ -24,7 +24,10 @@ export function ExperienceSection() {
             <div key={`${exp.company}-${exp.title}`}>
               <motion.div
                 className="py-4 px-3 -mx-3 rounded-[6px]"
-                whileHover={{ scale: 1.02, boxShadow: "0 4px 20px rgba(0,0,0,0.06)" }}
+                whileHover={{
+                  scale: 1.02,
+                  boxShadow: "0 4px 20px rgba(0,0,0,0.06)",
+                }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
               >
                 {/* Header row: image + title/company + duration/location + toggle */}
@@ -33,20 +36,22 @@ export function ExperienceSection() {
                   className="w-full flex items-start gap-3 text-left"
                   onClick={() => setExpandedIndex(isExpanded ? null : i)}
                 >
-                  <div className="w-10 h-10 rounded-[6px] bg-[#e4e4e5] shrink-0 border border-[#c4c6c8]" />
+                  <div className="w-10 h-10 rounded-[6px] bg-[var(--color-surface)] shrink-0 border border-[var(--color-outline-variant)]" />
                   <div className="flex-1 min-w-0 flex items-start justify-between gap-4">
                     <div>
-                      <p className="text-sm font-semibold text-[#1a1c1d]">
+                      <p className="text-sm font-semibold text-[var(--color-on-surface)]">
                         {exp.company}
                       </p>
-                      <p className="text-sm text-[#6e7072]">{exp.title}</p>
+                      <p className="text-sm text-[var(--color-on-surface-variant)]">
+                        {exp.title}
+                      </p>
                     </div>
                     <div className="text-right shrink-0">
-                      <p className="font-mono text-[11px] text-[#6e7072] whitespace-nowrap">
+                      <p className="font-mono text-[11px] text-[var(--color-on-surface-variant)] whitespace-nowrap">
                         {exp.duration}
                       </p>
                       {exp.location && (
-                        <p className="font-mono text-[10px] text-[#c4c6c8] whitespace-nowrap">
+                        <p className="font-mono text-[10px] text-[var(--color-outline-variant)] whitespace-nowrap">
                           {exp.location}
                         </p>
                       )}
@@ -58,9 +63,14 @@ export function ExperienceSection() {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    className={`shrink-0 mt-1 text-[#c4c6c8] transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`}
+                    className={`shrink-0 mt-1 text-[var(--color-outline-variant)] transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`}
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </button>
 
@@ -79,7 +89,7 @@ export function ExperienceSection() {
                           {exp.bullets.map((bullet) => (
                             <li
                               key={bullet}
-                              className="text-sm text-[#6e7072] list-disc"
+                              className="text-sm text-[var(--color-on-surface-variant)] list-disc"
                             >
                               {bullet}
                             </li>
@@ -89,10 +99,7 @@ export function ExperienceSection() {
                       {exp.tech.length > 0 && (
                         <div className="flex flex-wrap gap-1.5 mt-3">
                           {exp.tech.map((t) => (
-                            <span
-                              key={t}
-                              className="font-mono text-[10px] text-[#6e7072] px-1.5 py-0.5 border border-[#c4c6c8] rounded-[0.125rem]"
-                            >
+                            <span key={t} className="skill-tag">
                               {t}
                             </span>
                           ))}
@@ -102,14 +109,7 @@ export function ExperienceSection() {
                   )}
                 </AnimatePresence>
               </motion.div>
-              {i < experiences.length - 1 && (
-                <div
-                  className="h-px"
-                  style={{
-                    background: `repeating-linear-gradient(to right, var(--dot-color) 0px, var(--dot-color) 4px, transparent 4px, transparent 10px)`,
-                  }}
-                />
-              )}
+              {i < experiences.length - 1 && <div className="dotted-line" />}
             </div>
           );
         })}

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Footer from "@/components/Footer";
 import { DitherBackground } from "@/components/DitherBackground";
+import Footer from "@/components/Footer";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -21,13 +22,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} font-sans antialiased`}>
-        <DitherBackground />
-        <div className="relative z-10">
-          {children}
-          <Footer />
-        </div>
+        <ThemeProvider>
+          <DitherBackground />
+          <div className="relative z-10 min-h-screen flex flex-col">
+            {children}
+            <Footer />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
