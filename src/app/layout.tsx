@@ -1,17 +1,22 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans, Geist } from "next/font/google";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-jakarta",
+  display: "swap",
+});
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-});
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-montserrat",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -25,15 +30,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={cn("font-sans", geist.variable)}>
       <body
-        className={`${inter.variable} ${montserrat.variable} font-inter antialiased`}
+        className={`${jakarta.variable} ${inter.variable} font-sans antialiased`}
       >
-        <div className="min-h-screen flex flex-col">
-          <Header />
-          {children}
-          <Footer />
-        </div>
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   );

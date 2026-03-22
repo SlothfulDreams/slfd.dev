@@ -7,158 +7,72 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="w-full bg-[#A7B7A7] px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 py-4 border-b border-black">
-      <nav className="flex justify-between items-center">
-        <Link href="/" className="text-white font-medium font-montserrat">
+    <header className="w-full sticky top-0 z-50 bg-[var(--color-background)]">
+      <nav className="max-w-[700px] mx-auto px-6 py-4 flex justify-between items-center">
+        <Link
+          href="/"
+          className="text-[#000] font-semibold tracking-tight text-base"
+        >
           slfd.dev
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-8 font-montserrat text-[#605B58]">
-          <Link
-            href="/about"
-            className="hover:opacity-70 transition-opacity tracking-[0.1em]"
-          >
-            about
-          </Link>
-          <Link
-            href="/projects"
-            className="hover:opacity-70 transition-opacity tracking-[0.1em]"
-          >
+        <div className="hidden sm:flex items-center gap-6 font-mono text-xs uppercase tracking-[0.15em] text-[#6e7072]">
+          <Link href="/projects" className="hover:text-[#000] transition-colors">
             projects
           </Link>
-          <Link
-            href="/blogs"
-            className="hover:opacity-70 transition-opacity tracking-[0.1em]"
-          >
+          <Link href="/blogs" className="hover:text-[#000] transition-colors">
             blogs
           </Link>
           <a
             href="/Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:opacity-70 transition-opacity tracking-[0.1em]"
+            className="hover:text-[#000] transition-colors"
           >
             resume
           </a>
-          <Link
-            href="/contact"
-            className="hover:opacity-70 transition-opacity tracking-[0.1em]"
-          >
-            contact
-          </Link>
         </div>
 
         {/* Mobile Menu Button */}
         <button
           type="button"
-          className="md:hidden text-white font-montserrat"
+          className="sm:hidden text-[#000]"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <title>Toggle menu</title>
             {isMenuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
             ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
             )}
           </svg>
         </button>
       </nav>
 
-      {/* Mobile Navigation Menu */}
+      {/* Mobile Navigation */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="md:hidden mt-4 pb-4 backdrop-blur-md border-t border-[#758B80]/30 shadow-lg"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="sm:hidden max-w-[700px] mx-auto px-6 pb-4"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
           >
-            <div className="flex flex-col font-montserrat">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 }}
-              >
-                <Link
-                  href="/about"
-                  className="block px-6 py-3 text-[#605B58] hover:bg-[#758B80]/20 hover:text-[#E7DBD1] hover:border-l-4 hover:border-[#E7DBD1] hover:pl-8 transition-all duration-300 tracking-[0.1em] border-l-4 border-transparent"
-                >
-                  about
-                </Link>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 0.2 }}
-              >
-                <Link
-                  href="/projects"
-                  className="block px-6 py-3 text-[#605B58] hover:bg-[#758B80]/20 hover:text-[#E7DBD1] hover:border-l-4 hover:border-[#E7DBD1] hover:pl-8 transition-all duration-300 tracking-[0.1em] border-l-4 border-transparent"
-                >
-                  projects
-                </Link>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 0.3 }}
-              >
-                <Link
-                  href="/blogs"
-                  className="block px-6 py-3 text-[#605B58] hover:bg-[#758B80]/20 hover:text-[#E7DBD1] hover:border-l-4 hover:border-[#E7DBD1] hover:pl-8 transition-all duration-300 tracking-[0.1em] border-l-4 border-transparent"
-                >
-                  blogs
-                </Link>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 0.4 }}
-              >
-                <a
-                  href="/Resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block px-6 py-3 text-[#605B58] hover:bg-[#758B80]/20 hover:text-[#E7DBD1] hover:border-l-4 hover:border-[#E7DBD1] hover:pl-8 transition-all duration-300 tracking-[0.1em] border-l-4 border-transparent"
-                >
-                  resume
-                </a>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 0.5 }}
-              >
-                <Link
-                  href="/contact"
-                  className="block px-6 py-3 text-[#605B58] hover:bg-[#758B80]/20 hover:text-[#E7DBD1] hover:border-l-4 hover:border-[#E7DBD1] hover:pl-8 transition-all duration-300 tracking-[0.1em] border-l-4 border-transparent"
-                >
-                  contact
-                </Link>
-              </motion.div>
+            <div className="flex flex-col font-mono text-xs uppercase tracking-[0.15em] gap-1">
+              <Link href="/projects" className="py-2 text-[#6e7072] hover:text-[#000] transition-colors">projects</Link>
+              <Link href="/blogs" className="py-2 text-[#6e7072] hover:text-[#000] transition-colors">blogs</Link>
+              <a href="/Resume.pdf" target="_blank" rel="noopener noreferrer" className="py-2 text-[#6e7072] hover:text-[#000] transition-colors">resume</a>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Dotted bottom border */}
+      <div className="dotted-divider" style={{ margin: 0 }} />
     </header>
   );
 }

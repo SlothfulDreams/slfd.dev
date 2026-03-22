@@ -3,8 +3,9 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import type { Project } from "@/data/projects";
+import { SectionHeader } from "./SectionHeader";
 
-export default function Projects() {
+export function ProjectsSection() {
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
@@ -15,38 +16,23 @@ export default function Projects() {
           ...p,
           modified: new Date(p.modified),
         }));
-        setProjects(parsed);
+        setProjects(parsed.slice(0, 4));
       })
       .catch((err) => console.error("Failed to load projects:", err));
   }, []);
 
   return (
-    <main className="content-column py-12">
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-      >
-        <span className="section-label">All Projects</span>
-        <h1 className="text-2xl font-bold tracking-tight text-[#000] mb-2">
-          Projects
-        </h1>
-        <p className="text-sm text-[#6e7072] mb-8 font-[family-name:var(--font-inter)]">
-          Things I&apos;ve built and worked on.
-        </p>
-      </motion.div>
-
-      <div className="dotted-divider" />
+    <motion.section
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5 }}
+    >
+      <SectionHeader label="Featured Projects" viewAllHref="/projects" />
 
       <div className="project-grid">
         {projects.map((project) => (
-          <motion.div
-            key={project.id}
-            className="group"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
+          <div key={project.id} className="group">
             <div className="flex items-start justify-between mb-1">
               <h3 className="text-sm font-medium text-[#1a1c1d] group-hover:text-[#000]">
                 {project.name}
@@ -83,7 +69,7 @@ export default function Projects() {
             )}
             {project.tech && project.tech.length > 0 && (
               <div className="flex flex-wrap gap-1">
-                {project.tech.map((t) => (
+                {project.tech.slice(0, 4).map((t) => (
                   <span
                     key={t}
                     className="font-mono text-[10px] text-[#6e7072] px-1.5 py-0.5 border border-[#c4c6c8] rounded-[0.125rem]"
@@ -93,12 +79,12 @@ export default function Projects() {
                 ))}
               </div>
             )}
-          </motion.div>
+          </div>
         ))}
       </div>
 
       {projects.length === 0 && (
-        <div className="py-12 text-center">
+        <div className="py-8 text-center">
           <motion.span
             className="text-xs text-[#c4c6c8] font-mono"
             animate={{ opacity: [0.4, 1, 0.4] }}
@@ -108,6 +94,6 @@ export default function Projects() {
           </motion.span>
         </div>
       )}
-    </main>
+    </motion.section>
   );
 }

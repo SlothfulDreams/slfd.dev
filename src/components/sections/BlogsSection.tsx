@@ -2,41 +2,28 @@
 
 import { motion } from "framer-motion";
 import { blogPosts } from "@/data/blogs";
+import { SectionHeader } from "./SectionHeader";
 
-export default function Blogs() {
+export function BlogsSection() {
   return (
-    <main className="content-column py-12">
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-      >
-        <span className="section-label">All Posts</span>
-        <h1 className="text-2xl font-bold tracking-tight text-[#000] mb-2">
-          Blog
-        </h1>
-        <p className="text-sm text-[#6e7072] mb-8 font-[family-name:var(--font-inter)]">
-          Thoughts on code, design, and building things.
-        </p>
-      </motion.div>
-
-      <div className="dotted-divider" />
+    <motion.section
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5 }}
+    >
+      <SectionHeader label="Recent Writing" viewAllHref="/blogs" />
 
       <div>
         {blogPosts.map((post, i) => (
-          <motion.div
-            key={post.id}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: i * 0.05 }}
-          >
-            <div className="py-4 group cursor-pointer">
+          <div key={post.id}>
+            <div className="py-3 group cursor-pointer">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-sm font-medium text-[#1a1c1d] group-hover:text-[#000]">
                     {post.title}
                   </p>
-                  <p className="text-xs text-[#6e7072] mt-1 leading-relaxed">
+                  <p className="text-xs text-[#6e7072] mt-0.5">
                     {post.description}
                   </p>
                 </div>
@@ -53,9 +40,9 @@ export default function Blogs() {
                 }}
               />
             )}
-          </motion.div>
+          </div>
         ))}
       </div>
-    </main>
+    </motion.section>
   );
 }
