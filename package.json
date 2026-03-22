@@ -13,7 +13,7 @@
     "@react-three/fiber": "^9.5.0",
     "@react-three/postprocessing": "^3.0.4",
     "framer-motion": "^12.23.12",
-    "next": "15.5.0",
+    "next": "15.5.9",
     "postprocessing": "^6.39.0",
     "react": "19.1.0",
     "react-activity-calendar": "^3.1.1",
