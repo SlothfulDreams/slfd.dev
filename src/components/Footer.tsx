@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer className="w-full mt-auto">
       <div className="dotted-divider" style={{ margin: 0 }} />
-      <div className="max-w-[700px] mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
+      <div className="max-w-[750px] mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
         <span className="font-mono text-[11px] text-[#6e7072]">
           &copy; 2026 slfd.dev
         </span>

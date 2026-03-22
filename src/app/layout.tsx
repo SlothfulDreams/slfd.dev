@@ -1,17 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans, Geist } from "next/font/google";
+import { Inter } from "next/font/google";
 import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import { DitherBackground } from "@/components/DitherBackground";
 import "./globals.css";
-import { cn } from "@/lib/utils";
-
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-jakarta",
-  display: "swap",
-});
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,13 +21,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("font-sans", geist.variable)}>
-      <body
-        className={`${jakarta.variable} ${inter.variable} font-sans antialiased`}
-      >
-        <Header />
-        {children}
-        <Footer />
+    <html lang="en">
+      <body className={`${inter.variable} font-sans antialiased`}>
+        <DitherBackground />
+        <div className="relative z-10">
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );

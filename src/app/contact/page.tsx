@@ -1,11 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { profile } from "@/data/profile";
 
 export default function Contact() {
   return (
-    <main className="content-column py-12">
+    <main className="content-column pt-44 pb-24">
+      <Link href="/" className="inline-flex items-center gap-1 font-mono text-xs text-[#6e7072] hover:text-[#000] transition-colors mb-8">
+        &larr; back
+      </Link>
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}

@@ -32,7 +32,12 @@ export function ProjectsSection() {
 
       <div className="project-grid">
         {projects.map((project) => (
-          <div key={project.id} className="group">
+          <motion.div
+            key={project.id}
+            className="group rounded-[6px]"
+            whileHover={{ scale: 1.03, boxShadow: "0 4px 20px rgba(0,0,0,0.06)" }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
+          >
             <div className="flex items-start justify-between mb-1">
               <h3 className="text-sm font-medium text-[#1a1c1d] group-hover:text-[#000]">
                 {project.name}
@@ -79,7 +84,7 @@ export function ProjectsSection() {
                 ))}
               </div>
             )}
-          </div>
+          </motion.div>
         ))}
       </div>
 

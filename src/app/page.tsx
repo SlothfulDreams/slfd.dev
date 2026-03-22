@@ -1,15 +1,15 @@
 "use client";
 
-import { HeroSection } from "@/components/sections/HeroSection";
-import { ExperienceSection } from "@/components/sections/ExperienceSection";
-import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { BlogsSection } from "@/components/sections/BlogsSection";
-import { SkillsSection } from "@/components/sections/SkillsSection";
 import { DottedDivider } from "@/components/sections/DottedDivider";
+import { ExperienceSection } from "@/components/sections/ExperienceSection";
+import { HeroSection } from "@/components/sections/HeroSection";
+import { ProjectsSection } from "@/components/sections/ProjectsSection";
+import { SkillsSection } from "@/components/sections/SkillsSection";
 
 export default function Home() {
   return (
-    <main className="content-column py-12">
+    <main className="content-column pt-44 pb-24">
       <HeroSection />
       <DottedDivider />
       <ExperienceSection />

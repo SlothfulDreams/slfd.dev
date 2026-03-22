@@ -17,7 +17,11 @@ export function BlogsSection() {
       <div>
         {blogPosts.map((post, i) => (
           <div key={post.id}>
-            <div className="py-3 group cursor-pointer">
+            <motion.div
+              className="py-3 px-3 -mx-3 rounded-[6px] group cursor-pointer"
+              whileHover={{ scale: 1.02, boxShadow: "0 4px 20px rgba(0,0,0,0.06)" }}
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            >
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-sm font-medium text-[#1a1c1d] group-hover:text-[#000]">
@@ -31,7 +35,7 @@ export function BlogsSection() {
                   {post.date}
                 </span>
               </div>
-            </div>
+            </motion.div>
             {i < blogPosts.length - 1 && (
               <div
                 className="h-px"
