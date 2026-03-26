@@ -93,7 +93,7 @@ export default function Projects() {
             {project.video && (
               <video
                 src={project.video}
-                className="w-full rounded-[4px] mb-2"
+                className="w-full max-w-full rounded-[4px] mb-2"
                 muted
                 loop
                 playsInline
@@ -106,7 +106,7 @@ export default function Projects() {
                 <img
                   src={project.screenshots[0]}
                   alt={project.name}
-                  className="w-full rounded-[4px] mb-2"
+                  className="w-full max-w-full rounded-[4px] mb-2"
                 />
               )}
             {project.tech && project.tech.length > 0 && (

@@ -112,7 +112,7 @@ export default function ProjectDetail() {
         {project.video && (
           <video
             src={project.video}
-            className="w-full rounded-[6px] mb-5"
+            className="w-full max-w-full rounded-[6px] mb-5"
             muted
             loop
             playsInline
@@ -128,7 +128,7 @@ export default function ProjectDetail() {
                 key={src}
                 src={src}
                 alt={project.name}
-                className="w-full rounded-[6px]"
+                className="w-full max-w-full rounded-[6px]"
               />
             ))}
           </div>

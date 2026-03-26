@@ -28,6 +28,12 @@
   --content-padding: 1.5rem;
 }
 
+@media (max-width: 640px) {
+  :root {
+    --content-padding: 1rem;
+  }
+}
+
 .dark {
   /* Core palette — Catppuccin Mocha */
   --color-primary: #cdd6f4;
@@ -83,9 +89,19 @@ body {
 
 .content-column {
   max-width: var(--content-width);
+  width: 100%;
+  min-width: 0;
   margin: 0 auto;
   padding: 0 var(--content-padding);
   position: relative;
+  box-sizing: border-box;
+}
+
+.content-column img,
+.content-column video,
+.content-column canvas {
+  max-width: 100%;
+  height: auto;
 }
 
 .content-column::before,
@@ -132,7 +148,7 @@ body {
     transparent var(--dot-dash),
     transparent var(--dot-gap)
   );
-  margin: 2.5rem 0;
+  margin: 2rem 0;
   width: 100vw;
   position: relative;
   left: 50%;
@@ -168,6 +184,12 @@ body {
 .project-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  min-width: 0;
+}
+
+.project-grid > * {
+  min-width: 0;
+  overflow: hidden;
 }
 
 @media (max-width: 640px) {
@@ -177,7 +199,13 @@ body {
 }
 
 .project-grid > * {
-  padding: 1.25rem;
+  padding: 1rem;
+}
+
+@media (min-width: 641px) {
+  .project-grid > * {
+    padding: 1.25rem;
+  }
 }
 
 .project-grid > *:not(:nth-last-child(-n + 2)) {

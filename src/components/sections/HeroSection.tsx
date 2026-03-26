@@ -145,7 +145,7 @@ export function HeroSection() {
       <div className="dotted-divider" />
 
       {/* Banner */}
-      <div className="w-full h-36 rounded-[8px] overflow-hidden">
+      <div className="w-full h-28 sm:h-36 rounded-[8px] overflow-hidden flex-shrink-0">
         <ImageDithering
           width={750}
           height={144}
@@ -167,20 +167,20 @@ export function HeroSection() {
       <div className="dotted-divider" />
 
       {/* Avatar + Name */}
-      <div className="relative flex items-end gap-5 mb-6">
+      <div className="relative flex items-end gap-3 sm:gap-5 mb-6">
         <Image
           src={profile.avatar}
           alt={profile.name}
           width={100}
           height={100}
-          className="rounded-[6px] shrink-0"
+          className="rounded-[6px] shrink-0 w-16 h-16 sm:w-[100px] sm:h-[100px]"
           unoptimized
         />
-        <div className="flex-1">
-          <h1 className="text-2xl font-bold tracking-tight text-[var(--color-primary)]">
+        <div className="flex-1 min-w-0">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--color-primary)]">
             {profile.name}
           </h1>
-          <p className="text-sm text-[var(--color-on-surface-variant)] font-[family-name:var(--font-inter)]">
+          <p className="text-xs sm:text-sm text-[var(--color-on-surface-variant)] font-[family-name:var(--font-inter)]">
             {profile.title} &middot; <RotatingSubtitle />
           </p>
         </div>

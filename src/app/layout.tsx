@@ -27,7 +27,7 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans antialiased`}>
         <ThemeProvider>
           <DitherBackground />
-          <div className="relative z-10 min-h-screen flex flex-col">
+          <div className="relative z-10 min-h-screen flex flex-col overflow-x-hidden">
             {children}
             <Footer />
           </div>

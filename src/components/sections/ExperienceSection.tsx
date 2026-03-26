@@ -45,7 +45,7 @@ export function ExperienceSection() {
                   ) : (
                     <div className="w-10 h-10 rounded-[6px] bg-[var(--color-surface)] shrink-0 border border-[var(--color-outline-variant)]" />
                   )}
-                  <div className="flex-1 min-w-0 flex items-start justify-between gap-4">
+                  <div className="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-0.5 sm:gap-4">
                     <div>
                       <p className="text-sm font-semibold text-[var(--color-on-surface)]">
                         {exp.company}
@@ -54,7 +54,7 @@ export function ExperienceSection() {
                         {exp.title}
                       </p>
                     </div>
-                    <div className="text-right shrink-0">
+                    <div className="sm:text-right shrink-0">
                       <p className="font-mono text-[11px] text-[var(--color-on-surface-variant)] whitespace-nowrap">
                         {exp.duration}
                       </p>
