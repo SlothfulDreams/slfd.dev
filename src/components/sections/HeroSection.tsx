@@ -134,6 +134,43 @@ const socialIcons: Record<string, React.ReactNode> = {
   ),
 };
 
+function BannerImage() {
+  const [offsetY, setOffsetY] = useState(0.26);
+
+  useEffect(() => {
+    function updateOffset() {
+      const width = window.innerWidth;
+      // At 750px+ use default offset, at smaller widths shift image upward
+      const t = Math.min(1, Math.max(0, (750 - width) / 400));
+      setOffsetY(0.26 - t * 0.2);
+    }
+    updateOffset();
+    window.addEventListener("resize", updateOffset);
+    return () => window.removeEventListener("resize", updateOffset);
+  }, []);
+
+  return (
+    <div className="w-full h-28 sm:h-36 rounded-[8px] overflow-hidden flex-shrink-0">
+      <ImageDithering
+        width={750}
+        height={144}
+        image="/images/banner.jpg"
+        colorBack="#000000"
+        colorFront="#ffffff"
+        colorHighlight="#ffffff"
+        originalColors
+        inverted={false}
+        type="8x8"
+        size={2}
+        colorSteps={4}
+        fit="cover"
+        offsetY={offsetY}
+        style={{ width: "100%", height: "100%" }}
+      />
+    </div>
+  );
+}
+
 export function HeroSection() {
   return (
     <motion.section
@@ -145,24 +182,7 @@ export function HeroSection() {
       <div className="dotted-divider" />
 
       {/* Banner */}
-      <div className="w-full h-28 sm:h-36 rounded-[8px] overflow-hidden flex-shrink-0">
-        <ImageDithering
-          width={750}
-          height={144}
-          image="/images/banner.jpg"
-          colorBack="#000000"
-          colorFront="#ffffff"
-          colorHighlight="#ffffff"
-          originalColors
-          inverted={false}
-          type="8x8"
-          size={2}
-          colorSteps={4}
-          fit="cover"
-          offsetY={0.26}
-          style={{ width: "100%", height: "100%" }}
-        />
-      </div>
+      <BannerImage />
 
       <div className="dotted-divider" />
 

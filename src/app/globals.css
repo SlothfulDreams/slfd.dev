@@ -85,6 +85,16 @@ body {
   overflow-x: hidden;
 }
 
+/* ── Interactive elements ── */
+
+a,
+button,
+[role="button"],
+.skill-tag,
+.view-all {
+  cursor: pointer;
+}
+
 /* ── Centered column with flanking dotted borders ── */
 
 .content-column {
