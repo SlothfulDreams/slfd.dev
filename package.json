@@ -14,25 +14,25 @@
     "@react-three/fiber": "^9.5.0",
     "@react-three/postprocessing": "^3.0.4",
     "@vercel/analytics": "^2.0.1",
-    "framer-motion": "^12.23.12",
-    "next": "15.5.9",
+    "framer-motion": "^12.38.0",
+    "next": "16.2.1",
     "next-themes": "^0.4.6",
     "postprocessing": "^6.39.0",
-    "react": "19.1.0",
+    "react": "19.2.4",
     "react-activity-calendar": "^3.1.1",
-    "react-dom": "19.1.0",
+    "react-dom": "19.2.4",
     "tech-stack-icons": "^3.7.1",
     "three": "^0.183.2"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.8",
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@biomejs/biome": "2.4.9",
+    "@tailwindcss/postcss": "^4.2.2",
+    "@types/node": "^20.19.37",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "@types/three": "^0.183.1",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "tailwindcss": "^4.2.2",
+    "typescript": "^5.9.3"
   },
   "trustedDependencies": [
     "@tailwindcss/oxide"
