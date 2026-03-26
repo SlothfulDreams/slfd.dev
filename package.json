@@ -10,19 +10,28 @@
     "format": "biome format --write"
   },
   "dependencies": {
+    "@paper-design/shaders-react": "^0.0.72",
+    "@react-three/fiber": "^9.5.0",
+    "@react-three/postprocessing": "^3.0.4",
     "framer-motion": "^12.23.12",
-    "next": "15.5.0",
+    "next": "15.5.9",
+    "next-themes": "^0.4.6",
+    "postprocessing": "^6.39.0",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-activity-calendar": "^3.1.1",
+    "react-dom": "19.1.0",
+    "tech-stack-icons": "^3.7.1",
+    "three": "^0.183.2"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@biomejs/biome": "2.3.8",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
+    "@types/three": "^0.183.1",
     "tailwindcss": "^4",
-    "@biomejs/biome": "2.2.0"
+    "typescript": "^5"
   },
   "trustedDependencies": [
     "@tailwindcss/oxide"

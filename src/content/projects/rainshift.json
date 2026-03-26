@@ -1,0 +1,13 @@
+{
+  "id": "rainshift",
+  "name": "RainShift",
+  "type": "project",
+  "icon": "🌧️",
+  "description": "Web-based save editor for Risk of Rain 2 — unlock achievements, modify lunar coins, and more",
+  "content": "# RainShift\n\nA web-based save editor for Risk of Rain 2.\n\n## Features\n- Unlock achievements and modify lunar coins\n- Edit save files directly in the browser\n- Clean, intuitive interface for managing game data\n- No downloads required — runs entirely in the browser",
+  "tech": ["Next.js", "TypeScript", "Tailwind CSS"],
+  "github": "https://github.com/SlothfulDreams/RainShift",
+  "video": "/images/rainshift-demo.mp4",
+  "order": 3,
+  "size": "1.2MB"
+}

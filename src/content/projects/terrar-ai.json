@@ -1,0 +1,13 @@
+{
+  "id": "terrar-ai",
+  "name": "TerrarAI",
+  "type": "project",
+  "icon": "🎮",
+  "description": "AI-powered agentic NPC mod for Terraria — 1st Place at HackPrinceton '25 xAI Track, winning $8K in xAI credits out of 800+ participants",
+  "content": "# TerrarAI (1st Place at HackPrinceton - xAI Track)\n\nAn AI-powered agent mod for Terraria tModLoader that lets you spawn intelligent NPCs capable of understanding and executing natural language commands.\n\n## Features\n- Spawn AI agents that understand natural language instructions\n- Command agents to gather resources, build structures, and mine\n- AI-powered planning system using xAI (Grok) for complex task breakdown\n- ReAct-style reasoning loop with Grok-4-Fast and C# for context-aware decision-making across 50+ parallel agents\n- Structured JSON-based action parser and system prompt interface\n- Real-time agent status tracking and feedback\n- Chat-based command interface",
+  "tech": ["C#", "xAI", "tModLoader", "Grok"],
+  "github": "https://github.com/SlothfulDreams/terrar.ai",
+  "video": "/images/terrar-ai-demo.mp4",
+  "order": 1,
+  "size": "4.2MB"
+}
