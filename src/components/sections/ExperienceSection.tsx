@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import { TechTag } from "@/components/TechTag";
 import { experiences } from "@/data/experience";
 import { SectionHeader } from "./SectionHeader";
 
@@ -18,7 +19,7 @@ export function ExperienceSection() {
       <SectionHeader label="Experience" viewAllHref="/experience" />
 
       <div className="space-y-0">
-        {experiences.map((exp, i) => {
+        {experiences.slice(0, 4).map((exp, i) => {
           const isExpanded = expandedIndex === i;
           return (
             <div key={`${exp.company}-${exp.title}`}>
@@ -30,13 +31,20 @@ export function ExperienceSection() {
                 }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
               >
-                {/* Header row: image + title/company + duration/location + toggle */}
                 <button
                   type="button"
                   className="w-full flex items-start gap-3 text-left"
                   onClick={() => setExpandedIndex(isExpanded ? null : i)}
                 >
-                  <div className="w-10 h-10 rounded-[6px] bg-[var(--color-surface)] shrink-0 border border-[var(--color-outline-variant)]" />
+                  {exp.logo ? (
+                    <img
+                      src={exp.logo}
+                      alt={exp.company}
+                      className="w-10 h-10 rounded-[6px] shrink-0 border border-[var(--color-outline-variant)] object-cover"
+                    />
+                  ) : (
+                    <div className="w-10 h-10 rounded-[6px] bg-[var(--color-surface)] shrink-0 border border-[var(--color-outline-variant)]" />
+                  )}
                   <div className="flex-1 min-w-0 flex items-start justify-between gap-4">
                     <div>
                       <p className="text-sm font-semibold text-[var(--color-on-surface)]">
@@ -74,7 +82,6 @@ export function ExperienceSection() {
                   </svg>
                 </button>
 
-                {/* Expandable content: bullets + tech */}
                 <AnimatePresence>
                   {isExpanded && (
                     <motion.div
@@ -99,9 +106,7 @@ export function ExperienceSection() {
                       {exp.tech.length > 0 && (
                         <div className="flex flex-wrap gap-1.5 mt-3">
                           {exp.tech.map((t) => (
-                            <span key={t} className="skill-tag">
-                              {t}
-                            </span>
+                            <TechTag key={t} name={t} />
                           ))}
                         </div>
                       )}
@@ -109,7 +114,7 @@ export function ExperienceSection() {
                   )}
                 </AnimatePresence>
               </motion.div>
-              {i < experiences.length - 1 && <div className="dotted-line" />}
+              {i < 3 && <div className="dotted-line" />}
             </div>
           );
         })}

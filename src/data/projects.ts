@@ -8,9 +8,10 @@ export interface Project {
   tech?: string[];
   github?: string;
   demo?: string;
+  video?: string;
   screenshots?: string[];
   children?: Project[];
-  modified: Date;
+  order: number;
   size?: string;
   parent?: string;
 }

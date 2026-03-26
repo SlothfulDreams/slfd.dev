@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { TechTag } from "@/components/TechTag";
 import { skills } from "@/data/skills";
 import { SectionHeader } from "./SectionHeader";
 
@@ -22,9 +23,7 @@ export function SkillsSection() {
             </p>
             <div className="flex flex-wrap gap-2">
               {group.items.map((item) => (
-                <span key={item} className="skill-tag">
-                  {item}
-                </span>
+                <TechTag key={item.name} name={item.name} iconKey={item.icon} />
               ))}
             </div>
           </div>

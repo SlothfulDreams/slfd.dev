@@ -1,22 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SubpageLayout } from "@/components/SubpageLayout";
+import { TechTag } from "@/components/TechTag";
 import type { Project } from "@/data/projects";
 
 export default function Projects() {
+  const router = useRouter();
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
     fetch("/api/projects")
       .then((res) => res.json())
       .then((data) => {
-        const parsed = data.map((p: Project & { modified: string }) => ({
-          ...p,
-          modified: new Date(p.modified),
-        }));
-        setProjects(parsed);
+        setProjects(data);
       })
       .catch((err) => console.error("Failed to load projects:", err));
   }, []);
@@ -27,7 +26,8 @@ export default function Projects() {
         {projects.map((project) => (
           <motion.div
             key={project.id}
-            className="group"
+            className="group cursor-pointer"
+            onClick={() => router.push(`/projects/${project.id}`)}
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
@@ -42,6 +42,7 @@ export default function Projects() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
                     className="text-[var(--color-outline-variant)] hover:text-[var(--color-primary)] transition-colors"
                     aria-label="GitHub"
                   >
@@ -61,6 +62,7 @@ export default function Projects() {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
                     className="text-[var(--color-outline-variant)] hover:text-[var(--color-primary)] transition-colors"
                     aria-label="Live Demo"
                   >
@@ -88,12 +90,29 @@ export default function Projects() {
                 {project.description}
               </p>
             )}
+            {project.video && (
+              <video
+                src={project.video}
+                className="w-full rounded-[4px] mb-2"
+                muted
+                loop
+                playsInline
+                autoPlay
+              />
+            )}
+            {!project.video &&
+              project.screenshots &&
+              project.screenshots[0] && (
+                <img
+                  src={project.screenshots[0]}
+                  alt={project.name}
+                  className="w-full rounded-[4px] mb-2"
+                />
+              )}
             {project.tech && project.tech.length > 0 && (
               <div className="flex flex-wrap gap-1">
                 {project.tech.map((t) => (
-                  <span key={t} className="skill-tag">
-                    {t}
-                  </span>
+                  <TechTag key={t} name={t} />
                 ))}
               </div>
             )}

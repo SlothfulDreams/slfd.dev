@@ -1,0 +1,22 @@
+{
+  "id": "chatpt",
+  "name": "ChatPT",
+  "type": "project",
+  "icon": "🏥",
+  "description": "AI physiotherapist on a 3D anatomical model — click where it hurts, describe symptoms, and receive clinical assessments with personalized rehab plans",
+  "content": "# ChatPT\n\nAI physiotherapist on a 3D anatomical model.\n\n## What it does\nChatPT lets you click where it hurts on an interactive 3D body, describe your symptoms, and receive a clinical assessment from an AI physiotherapist agent. The agent reasons over a RAG pipeline of medical textbooks, diagnoses the affected muscles, and generates a personalized rehab/workout plan — all visualized in real time on a color-coded anatomical model.\n\n## Features\n- Interactive 3D anatomical model with 200+ individually selectable muscles\n- AI physiotherapist agent with multi-step reasoning and tool calling\n- RAG over clinical knowledge base with Qdrant vector search\n- Targeted rehab plan generation for affected muscle groups\n- Per-muscle condition tracking with severity levels and history\n- Voice input via Whisper for hands-free symptom description\n- Real-time state sync with Convex reactive database",
+  "tech": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "FastAPI",
+    "Qdrant",
+    "React Three Fiber",
+    "Convex",
+    "Tailwind CSS"
+  ],
+  "github": "https://github.com/SlothfulDreams/ChatPT",
+  "screenshots": ["/images/chatpt-preview.png"],
+  "order": 2,
+  "size": "3.8MB"
+}

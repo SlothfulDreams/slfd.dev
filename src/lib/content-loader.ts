@@ -12,8 +12,9 @@ interface ProjectJSON {
   tech?: string[];
   github?: string;
   demo?: string;
+  video?: string;
   screenshots?: string[];
-  modified: string;
+  order: number;
   size?: string;
 }
 
@@ -29,14 +30,10 @@ export async function loadProjects(): Promise<Project[]> {
     const content = fs.readFileSync(filePath, "utf-8");
     const data: ProjectJSON = JSON.parse(content);
 
-    projects.push({
-      ...data,
-      modified: new Date(data.modified),
-    });
+    projects.push(data);
   }
 
-  // Sort by modified date, newest first
-  projects.sort((a, b) => b.modified.getTime() - a.modified.getTime());
+  projects.sort((a, b) => a.order - b.order);
 
   return projects;
 }

@@ -53,10 +53,14 @@ export async function GET() {
   }
 
   try {
+    const from = new Date();
+    from.setFullYear(from.getFullYear() - 1);
+    const fromISO = from.toISOString();
+
     const query = `
       query {
         user(login: "${GITHUB_USERNAME}") {
-          contributionsCollection {
+          contributionsCollection(from: "${fromISO}") {
             contributionCalendar {
               totalContributions
               weeks {
