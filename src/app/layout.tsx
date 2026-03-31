@@ -1,6 +1,7 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { CommandPalette } from "@/components/CommandPalette";
 import { DitherBackground } from "@/components/DitherBackground";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -31,6 +32,7 @@ export default function RootLayout({
             {children}
             <Footer />
           </div>
+          <CommandPalette />
         </ThemeProvider>
         <Analytics />
       </body>

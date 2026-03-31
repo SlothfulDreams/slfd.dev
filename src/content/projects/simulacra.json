@@ -1,0 +1,21 @@
+{
+  "id": "simulacra",
+  "name": "Simulacra",
+  "type": "project",
+  "icon": "🏙️",
+  "description": "Economic policy simulation with 25 AI agents in a pixel-art city — 1st Place at YHacks '26 K2 Think V2 Track",
+  "content": "# Simulacra (1st Place at YHacks - K2 Think V2 Track)\n\nEconomic policy simulation where 25 AI agents react to real policy proposals in a pixel-art city.\n\n## How it works\n- Paste ~500 words of economic policy (e.g. \"Raise minimum wage to $20/hr\")\n- 25 NPCs spawn: workers, business owners, politicians, students, retirees, activists, farmers, shopkeepers, drivers\n- 15 simulation rounds run across 3 phases — each NPC perceives, retrieves memories, reflects, plans, and acts\n- Social influence spreads via proximity-based opinion dynamics (Deffuant bounded confidence, Baumann polarization)\n- Live dashboard tracks price index, unemployment, and social unrest with an interactive force-layout social graph\n\n## Features\n- Click any NPC to inspect mood, income, political leaning, internal thoughts, and current plan\n- Bankruptcy markers, floating money effects, and emotion indicators animate in real time\n- WebSocket streaming for live simulation updates\n- Multi-agent orchestration with LangGraph's async execution",
+  "tech": [
+    "Next.js",
+    "TypeScript",
+    "Python",
+    "FastAPI",
+    "LangGraph",
+    "Phaser",
+    "xAI"
+  ],
+  "github": "https://github.com/AdamPSU/simulacra",
+  "screenshots": ["/images/simulacra-preview.png"],
+  "order": 2,
+  "size": "2.1MB"
+}

@@ -8,6 +8,6 @@
   "tech": ["Next.js", "TypeScript", "Tailwind CSS"],
   "github": "https://github.com/SlothfulDreams/RainShift",
   "video": "/images/rainshift-demo.mp4",
-  "order": 3,
+  "order": 4,
   "size": "1.2MB"
 }

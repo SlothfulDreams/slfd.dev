@@ -59,15 +59,7 @@ export const experiences: Experience[] = [
       "Built real-time transcript middleware in Express integrating Prim voice AI with interruption detection, leveraging Upstash Redis for sub-100ms latency across 6 production agents",
       "Architected a node-based agent deployment system using ReactFlow enabling drag-and-drop prompt chaining and dynamic context injection, reducing configuration time by 75%",
     ],
-    tech: [
-      "TypeScript",
-      "Express",
-      "ReactFlow",
-      "Redis",
-      "Pydantic",
-      "Twilio",
-      "LLM",
-    ],
+    tech: ["TypeScript", "Express", "ReactFlow", "Redis", "Pydantic", "Twilio"],
   },
   {
     title: "Software Engineer",
