@@ -15,7 +15,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "slfd.dev",
-  description: "hey i'm benson - i try to build cool stuff",
+  description: "slothy — engineer, builder, tinkerer",
 };
 
 export default function RootLayout({
