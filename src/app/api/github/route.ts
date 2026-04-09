@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { cacheLife } from "next/cache";
 
 const GITHUB_USERNAME = "SlothfulDreams";
 
@@ -44,12 +45,14 @@ function mapLevel(level: string): 0 | 1 | 2 | 3 | 4 {
   }
 }
 
-export async function GET() {
+async function getGitHubContributions() {
+  "use cache";
+  cacheLife("days");
+
   const token = process.env.GITHUB_TOKEN;
 
   if (!token) {
-    // Return mock data if no token
-    return NextResponse.json({ contributions: [], totalContributions: 0 });
+    return { contributions: [] as ContributionDay[], totalContributions: 0 };
   }
 
   try {
@@ -83,7 +86,6 @@ export async function GET() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ query }),
-      next: { revalidate: 3600 }, // Cache for 1 hour
     });
 
     if (!res.ok) {
@@ -102,12 +104,17 @@ export async function GET() {
       })),
     );
 
-    return NextResponse.json({
+    return {
       contributions,
       totalContributions: calendar.totalContributions,
-    });
+    };
   } catch (error) {
     console.error("Failed to fetch GitHub contributions:", error);
-    return NextResponse.json({ contributions: [], totalContributions: 0 });
+    return { contributions: [] as ContributionDay[], totalContributions: 0 };
   }
+}
+
+export async function GET() {
+  const data = await getGitHubContributions();
+  return NextResponse.json(data);
 }
