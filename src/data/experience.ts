@@ -9,22 +9,22 @@ export interface Experience {
 }
 
 export const experiences: Experience[] = [
-  {
-    title: "Incoming Software Developer Intern",
-    company: "IBM",
-    duration: "Incoming Fall 2026",
-    logo: "/images/companies/ibm.png",
-    bullets: ["Coming Soon!"],
-    tech: [],
-  },
-  {
-    title: "Incoming Software Engineering Intern",
-    company: "PwC",
-    duration: "Incoming Summer 2026",
-    logo: "/images/companies/pwc.png",
-    bullets: ["Coming Soon!"],
-    tech: [],
-  },
+  // {
+  //   title: "Incoming Software Developer Intern",
+  //   company: "IBM",
+  //   duration: "Incoming Fall 2026",
+  //   logo: "/images/companies/ibm.png",
+  //   bullets: ["Coming Soon!"],
+  //   tech: [],
+  // },
+  // {
+  //   title: "Incoming Software Engineering Intern",
+  //   company: "PwC",
+  //   duration: "Incoming Summer 2026",
+  //   logo: "/images/companies/pwc.png",
+  //   bullets: ["Coming Soon!"],
+  //   tech: [],
+  // },
   {
     title: "Software Engineering Intern",
     company: "Thinkstruct",
@@ -32,20 +32,19 @@ export const experiences: Experience[] = [
     location: "Cambridge, MA",
     logo: "/images/companies/thinkstruct.png",
     bullets: [
-      "Built an async claim mapping pipeline using Anthropic API with Pydantic structured outputs, processing 50+ page patent specifications through token-budgeted chunking to automate prior art analysis",
-      "Implemented REST API endpoints and domain models in Flask with SQLAlchemy, building a background job queue to orchestrate patent analysis tasks across dual PostgreSQL databases and Anthropic LLM integrations",
-      "Developing interactive claim chart UI in Next.js and React with TanStack Query for real-time job polling, featuring split-panel patent document navigation and structured Excel export",
+      "Engineer async claim mapping pipelines via Anthropic API with Pydantic structured outputs, processing 50+ page patent specs through token-budgeted chunking to cut prior art review time by 70%",
+      "Architect RESTful API endpoints and domain models in Flask with SQLAlchemy, building a background job queue to orchestrate patent analysis tasks across dual PostgreSQL databases and LLM integrations",
+      "Build an agentic support chatbot with Vercel AI SDK using SSE streaming, tool-calling RAG over internal docs, and system prompt guardrails against hallucination and legal advice, reducing support tickets by 40%",
     ],
     tech: [
       "Python",
       "Flask",
       "SQLAlchemy",
       "PostgreSQL",
-      "Next.js",
-      "React",
-      "TanStack Query",
       "Anthropic API",
       "Pydantic",
+      "Vercel AI SDK",
+      "TypeScript",
     ],
   },
   {
@@ -55,11 +54,11 @@ export const experiences: Experience[] = [
     location: "Cambridge, MA",
     logo: "/images/companies/coverix.png",
     bullets: [
-      "Developed an LLM evaluation pipeline using chain-of-thought prompting and Pydantic structured outputs to assess voice agent performance on tool use, objection handling, and lead qualification",
-      "Built real-time transcript middleware in Express integrating Prim voice AI with interruption detection, leveraging Upstash Redis for sub-100ms latency across 6 production agents",
-      "Architected a node-based agent deployment system using ReactFlow enabling drag-and-drop prompt chaining and dynamic context injection, reducing configuration time by 75%",
+      "Built an LLM evaluation pipeline with chain-of-thought prompting and Pydantic structured outputs, running 200+ automated test scenarios to benchmark voice agent accuracy on tool use and lead qualification at 93%",
+      "Integrated real-time transcript middleware in Express connecting Voicerun with interruption detection, leveraging Upstash Redis for sub-100ms latency across 6 production agents handling outbound calls via Twilio",
+      "Architected a ReactFlow-based deployment system with drag-and-drop prompt chaining and dynamic context injection, reducing configuration time by 75% for enterprise clients",
     ],
-    tech: ["TypeScript", "Express", "ReactFlow", "Redis", "Pydantic", "Twilio"],
+    tech: ["TypeScript", "Express", "ReactFlow", "Upstash Redis", "Pydantic", "Twilio", "Voicerun"],
   },
   {
     title: "Software Engineer",
