@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { useState } from "react";
 import { TechTag } from "@/components/TechTag";
 import { experiences } from "@/data/experience";
@@ -37,9 +38,11 @@ export function ExperienceSection() {
                   onClick={() => setExpandedIndex(isExpanded ? null : i)}
                 >
                   {exp.logo ? (
-                    <img
+                    <Image
                       src={exp.logo}
                       alt={exp.company}
+                      width={40}
+                      height={40}
                       className="w-10 h-10 rounded-[6px] shrink-0 border border-[var(--color-outline-variant)] object-cover"
                     />
                   ) : (

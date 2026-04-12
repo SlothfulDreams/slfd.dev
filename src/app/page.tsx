@@ -1,5 +1,3 @@
-"use client";
-
 import { BlogsSection } from "@/components/sections/BlogsSection";
 import { DottedDivider } from "@/components/sections/DottedDivider";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";

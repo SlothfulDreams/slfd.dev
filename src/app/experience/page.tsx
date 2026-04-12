@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { useState } from "react";
 import { SubpageLayout } from "@/components/SubpageLayout";
 import { TechTag } from "@/components/TechTag";
@@ -28,9 +29,11 @@ export default function Experience() {
                 onClick={() => setExpandedIndex(isExpanded ? null : i)}
               >
                 {exp.logo ? (
-                  <img
+                  <Image
                     src={exp.logo}
                     alt={exp.company}
+                    width={48}
+                    height={48}
                     className="w-12 h-12 rounded-[6px] shrink-0 border border-[var(--color-outline-variant)] object-cover"
                   />
                 ) : (

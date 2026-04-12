@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SubpageLayout } from "@/components/SubpageLayout";
@@ -103,10 +104,13 @@ export default function Projects() {
             {!project.video &&
               project.screenshots &&
               project.screenshots[0] && (
-                <img
+                <Image
                   src={project.screenshots[0]}
                   alt={project.name}
-                  className="w-full max-w-full rounded-[4px] mb-2"
+                  width={1200}
+                  height={675}
+                  sizes="(max-width: 640px) 100vw, 400px"
+                  className="w-full max-w-full h-auto rounded-[4px] mb-2"
                 />
               )}
             {project.tech && project.tech.length > 0 && (

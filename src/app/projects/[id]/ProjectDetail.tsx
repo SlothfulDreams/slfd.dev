@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SubpageLayout } from "@/components/SubpageLayout";
@@ -129,11 +130,14 @@ export default function ProjectDetail() {
         {project.screenshots && project.screenshots.length > 0 && (
           <div className="space-y-3 mb-5">
             {project.screenshots.map((src) => (
-              <img
+              <Image
                 key={src}
                 src={src}
                 alt={project.name}
-                className="w-full max-w-full rounded-[6px]"
+                width={1600}
+                height={900}
+                sizes="(max-width: 768px) 100vw, 600px"
+                className="w-full max-w-full h-auto rounded-[6px]"
               />
             ))}
           </div>

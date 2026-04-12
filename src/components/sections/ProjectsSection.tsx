@@ -1,11 +1,40 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TechTag } from "@/components/TechTag";
 import type { Project } from "@/data/projects";
 import { SectionHeader } from "./SectionHeader";
+
+function ProjectVideo({ src, poster }: { src: string; poster?: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) el.play().catch(() => {});
+        else el.pause();
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return (
+    <video
+      ref={ref}
+      src={src}
+      poster={poster}
+      muted
+      loop
+      playsInline
+      className="w-full max-w-full rounded-[4px] mb-2"
+    />
+  );
+}
 
 export function ProjectsSection() {
   const router = useRouter();
@@ -100,22 +129,21 @@ export function ProjectsSection() {
               </p>
             )}
             {project.video && (
-              <video
+              <ProjectVideo
                 src={project.video}
-                className="w-full max-w-full rounded-[4px] mb-2"
-                muted
-                loop
-                playsInline
-                autoPlay
+                poster={project.screenshots?.[0]}
               />
             )}
             {!project.video &&
               project.screenshots &&
               project.screenshots[0] && (
-                <img
+                <Image
                   src={project.screenshots[0]}
                   alt={project.name}
-                  className="w-full max-w-full rounded-[4px] mb-2"
+                  width={1200}
+                  height={675}
+                  sizes="(max-width: 640px) 100vw, 400px"
+                  className="w-full max-w-full h-auto rounded-[4px] mb-2"
                 />
               )}
             {project.tech && project.tech.length > 0 && (

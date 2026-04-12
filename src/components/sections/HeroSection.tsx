@@ -194,6 +194,7 @@ export function HeroSection() {
           width={100}
           height={100}
           className="rounded-[6px] shrink-0 w-16 h-16 sm:w-[100px] sm:h-[100px]"
+          priority
           unoptimized
         />
         <div className="flex-1 min-w-0">
