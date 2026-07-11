@@ -50,6 +50,7 @@ export const techIconMap: Record<string, string> = {
 
   // APIs & Services
   "Anthropic API": "anthropic",
+  "Vercel AI SDK": "vercel",
   Twilio: "twilio",
   xAI: "grok",
   Grok: "grok",
