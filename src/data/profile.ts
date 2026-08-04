@@ -20,6 +20,10 @@ export const profile = {
       href: "mailto:zheng.ben@northeastern.edu",
       icon: "email" as const,
     },
-    { label: "Resume", href: "/Resume.pdf", icon: "resume" as const },
+    {
+      label: "Resume",
+      href: "/Benson-Zheng-Resume.pdf",
+      icon: "resume" as const,
+    },
   ],
 };
