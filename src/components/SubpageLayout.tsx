@@ -21,6 +21,7 @@ export function SubpageLayout({ title, children }: SubpageLayoutProps) {
       >
         <Link
           href="/"
+          data-cuelume-hover="tick"
           className="text-[var(--color-on-surface-variant)] hover:text-[var(--color-primary)] transition-colors text-2xl font-light leading-none"
           aria-label="Back to home"
         >

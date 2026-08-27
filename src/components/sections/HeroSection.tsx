@@ -222,6 +222,7 @@ export function HeroSection() {
               href={social.href}
               target={social.icon === "email" ? undefined : "_blank"}
               rel={social.icon === "email" ? undefined : "noopener noreferrer"}
+              data-cuelume-hover="tick"
               className="flex items-center group gap-1.5 px-2.5 py-1.5 border border-[var(--color-outline-variant)] hover:border-[var(--color-on-surface-variant)] bg-transparent transition-colors duration-200 select-none rounded-[6px] font-mono text-[11px] text-[var(--color-on-surface-variant)] hover:text-[var(--color-on-surface)]"
             >
               {socialIcons[social.icon]}

@@ -34,6 +34,7 @@ export function ExperienceSection() {
               >
                 <button
                   type="button"
+                  data-cuelume-toggle
                   className="w-full flex items-start gap-3 text-left"
                   onClick={() => setExpandedIndex(isExpanded ? null : i)}
                 >

@@ -63,6 +63,7 @@ export function ProjectsSection() {
           <motion.div
             key={project.id}
             className="group rounded-[6px] cursor-pointer"
+            data-cuelume-press="page"
             onClick={() => router.push(`/projects/${project.id}`)}
             whileHover={{
               scale: 1.03,
@@ -81,6 +82,7 @@ export function ProjectsSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
+                    data-cuelume-hover="tick"
                     className="text-[var(--color-outline-variant)] hover:text-[var(--color-primary)] transition-colors"
                     aria-label="GitHub"
                   >
@@ -101,6 +103,7 @@ export function ProjectsSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
+                    data-cuelume-hover="tick"
                     className="text-[var(--color-outline-variant)] hover:text-[var(--color-primary)] transition-colors"
                     aria-label="Live Demo"
                   >

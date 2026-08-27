@@ -9,6 +9,7 @@ export default function Footer() {
         <div className="flex items-center gap-4">
           <a
             href="https://github.com/SlothfulDreams"
+            data-cuelume-hover="tick"
             className="text-[var(--color-on-surface-variant)] hover:text-[var(--color-primary)] transition-colors"
             aria-label="GitHub"
           >
@@ -19,6 +20,7 @@ export default function Footer() {
           </a>
           <a
             href="https://www.linkedin.com/in/zhengbenson"
+            data-cuelume-hover="tick"
             className="text-[var(--color-on-surface-variant)] hover:text-[var(--color-primary)] transition-colors"
             aria-label="LinkedIn"
           >
@@ -29,6 +31,7 @@ export default function Footer() {
           </a>
           <a
             href="mailto:zheng.ben@northeastern.edu"
+            data-cuelume-hover="tick"
             className="text-[var(--color-on-surface-variant)] hover:text-[var(--color-primary)] transition-colors"
             aria-label="Email"
           >

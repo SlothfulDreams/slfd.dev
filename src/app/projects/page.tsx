@@ -28,6 +28,7 @@ export default function Projects() {
           <motion.div
             key={project.id}
             className="group cursor-pointer"
+            data-cuelume-press="page"
             onClick={() => router.push(`/projects/${project.id}`)}
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -44,6 +45,7 @@ export default function Projects() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
+                    data-cuelume-hover="tick"
                     className="text-[var(--color-outline-variant)] hover:text-[var(--color-primary)] transition-colors"
                     aria-label="GitHub"
                   >
@@ -64,6 +66,7 @@ export default function Projects() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
+                    data-cuelume-hover="tick"
                     className="text-[var(--color-outline-variant)] hover:text-[var(--color-primary)] transition-colors"
                     aria-label="Live Demo"
                   >

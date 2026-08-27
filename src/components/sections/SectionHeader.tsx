@@ -11,7 +11,11 @@ export function SectionHeader({ label, viewAllHref }: SectionHeaderProps) {
       <div className="flex items-center justify-between">
         <span className="section-label">{label}</span>
         {viewAllHref && (
-          <Link href={viewAllHref} className="view-all">
+          <Link
+            href={viewAllHref}
+            data-cuelume-hover="tick"
+            className="view-all"
+          >
             View All &rarr;
           </Link>
         )}

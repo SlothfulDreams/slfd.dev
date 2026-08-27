@@ -74,6 +74,7 @@ export default function ProjectDetail() {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
+              data-cuelume-hover="tick"
               className="inline-flex items-center gap-1.5 font-mono text-[11px] text-[var(--color-on-surface-variant)] hover:text-[var(--color-primary)] transition-colors"
             >
               <svg
@@ -93,6 +94,7 @@ export default function ProjectDetail() {
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
+              data-cuelume-hover="tick"
               className="inline-flex items-center gap-1.5 font-mono text-[11px] text-[var(--color-on-surface-variant)] hover:text-[var(--color-primary)] transition-colors"
             >
               <svg

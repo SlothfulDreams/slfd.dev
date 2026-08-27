@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { CommandPalette } from "@/components/CommandPalette";
 import { DitherBackground } from "@/components/DitherBackground";
 import Footer from "@/components/Footer";
+import { SoundEffects } from "@/components/SoundEffects";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
@@ -33,6 +34,7 @@ export default function RootLayout({
             <Footer />
           </div>
           <CommandPalette />
+          <SoundEffects />
         </ThemeProvider>
         <Analytics />
       </body>

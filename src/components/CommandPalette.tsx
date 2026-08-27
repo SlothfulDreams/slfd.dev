@@ -3,6 +3,7 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Command } from "cmdk";
+import { play } from "cuelume";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { useCallback, useEffect, useState } from "react";
@@ -14,12 +15,20 @@ export function CommandPalette() {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
 
+  const toggleOpen = useCallback((next: boolean) => {
+    play(next ? "bloom" : "droplet");
+    setOpen(next);
+  }, []);
+
   useEffect(() => {
     setMounted(true);
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        setOpen((o) => !o);
+        setOpen((o) => {
+          play(o ? "droplet" : "bloom");
+          return !o;
+        });
       }
     };
     document.addEventListener("keydown", down);
@@ -27,6 +36,7 @@ export function CommandPalette() {
   }, []);
 
   const runAction = useCallback((action: () => void) => {
+    play("page");
     setOpen(false);
     action();
   }, []);
@@ -36,7 +46,7 @@ export function CommandPalette() {
   return (
     <>
       <button
-        onClick={() => setOpen(true)}
+        onClick={() => toggleOpen(true)}
         className="cmd-trigger"
         aria-label="Open command palette"
       >
@@ -45,12 +55,15 @@ export function CommandPalette() {
       </button>
       <Command.Dialog
         open={open}
-        onOpenChange={setOpen}
+        onOpenChange={toggleOpen}
         label="Command palette"
         className="cmd-overlay"
       >
         <VisuallyHidden>
           <Dialog.Title>Command palette</Dialog.Title>
+          <Dialog.Description>
+            Search for commands, navigate the site, or open social links
+          </Dialog.Description>
         </VisuallyHidden>
         <div className="cmd-dialog">
           <Command.Input

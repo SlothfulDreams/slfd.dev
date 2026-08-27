@@ -44,6 +44,7 @@ export function ThemeToggle() {
   return (
     <button
       type="button"
+      data-cuelume-toggle
       onClick={toggleTheme}
       className="w-8 h-8 flex items-center justify-center rounded-[6px] text-[var(--color-on-surface-variant)] hover:text-[var(--color-primary)] transition-colors"
       aria-label="Toggle theme"

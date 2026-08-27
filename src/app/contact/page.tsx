@@ -19,6 +19,7 @@ export default function Contact() {
               href={social.href}
               target={social.icon === "email" ? undefined : "_blank"}
               rel={social.icon === "email" ? undefined : "noopener noreferrer"}
+              data-cuelume-hover="tick"
               className="group block py-4"
             >
               <div className="flex items-center justify-between">
