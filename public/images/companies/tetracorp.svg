@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Tetracorp logo">
+  <rect width="200" height="200" fill="#000"/>
+  <path d="M100 17 121 79 183 100 121 121 100 183 79 121 17 100 79 79Z" fill="#fff"/>
+  <circle cx="100" cy="100" r="14" fill="#000"/>
+</svg>

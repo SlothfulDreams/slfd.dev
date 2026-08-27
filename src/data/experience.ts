@@ -10,20 +10,21 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
-    title: "Incoming Software Development Engineer Intern",
+    title: "Software Development Engineer Intern",
     company: "IBM",
-    duration: "Fall 2026",
+    duration: "Aug 2026 – Present",
     logo: "/images/companies/ibm.png",
+    bullets: ["IBM Bob"],
     tech: [],
   },
   {
     title: "Software Engineering Intern",
     company: "PwC",
-    duration: "Jun 2026 – Present",
+    duration: "Jun 2026 – Aug 2026",
     location: "New York, NY",
     logo: "/images/companies/pwc.png",
     bullets: [
-      "Engineered an agentic AI harness with Claude Agent SDK and Python, orchestrating autonomous private equity fee calculations via MCP tool-calling and deterministic script execution, reducing manual calculation time by 85%",
+      "Engineered an agentic AI harness with Claude Agent SDK and computer use (UI automation), orchestrating autonomous private equity fee calculations via MCP tool-calling, reducing manual calculation time by 85%",
       "Shipped an LLM-as-judge grading pipeline with Pydantic schema validation across 6 LLM graders, catching 95% of calculation errors through independent cross-check verification and self-correcting retry loops",
       "Hardened CI/CD in GitHub Actions by enforcing 5 blocking lint, SCA, and complexity checks and migrating 2 package managers to uv lockfile-pinned builds, eliminating environment drift across local and CI environments",
     ],
@@ -57,6 +58,27 @@ export const experiences: Experience[] = [
     ],
   },
   {
+    title: "Software Engineer",
+    company: "Tetracorp",
+    duration: "Jan 2026 – Jun 2026",
+    location: "Remote",
+    logo: "/images/companies/tetracorp.svg",
+    bullets: [
+      "Architected and led Bluffs, a real-money iMessage gaming platform, to 23,750+ users and a Top-40 peak in Strategy on the US App Store, building a React Native app and 4 SpriteKit/SceneKit games with deterministic Box2D physics",
+      "Engineered real-money Convex backend across 16 tables: idempotent integer-cents ledger, per-wager HMAC-signed geofencing, billing-matched Sumsub KYC, and 4-signal device fingerprinting to shut out fraud and balance drift",
+      "Launched an LLM prediction market on Anthropic Claude API that auto-resolves real-world wagers through web-search grounding and structured tool outputs, with retry-then-void fallback and signed receipts to block tampering",
+    ],
+    tech: [
+      "React Native",
+      "SpriteKit",
+      "SceneKit",
+      "Box2D",
+      "Convex",
+      "Sumsub",
+      "Anthropic API",
+    ],
+  },
+  {
     title: "AI Engineering Intern",
     company: "Coverix",
     duration: "Jan 2026 – Mar 2026",
@@ -75,26 +97,6 @@ export const experiences: Experience[] = [
       "Pydantic",
       "Twilio",
       "Voicerun",
-    ],
-  },
-  {
-    title: "Software Engineer",
-    company: "Tetracorp",
-    duration: "Jan 2026 – Present",
-    location: "Remote",
-    bullets: [
-      "Architected and led Bluffs, a real-money iMessage gaming platform, to 23,750+ users and a Top-40 peak in Strategy on the US App Store, building a React Native app and 4 SpriteKit/SceneKit games with deterministic Box2D physics",
-      "Engineered a real-money Convex backend across 16 tables: idempotent integer-cents ledger, per-wager HMAC-signed geofencing, billing-matched Sumsub KYC, and 4-signal device fingerprinting to shut out fraud and balance drift",
-      "Launched an LLM prediction market on Anthropic Claude API that auto-resolves real-world wagers through web-search grounding and structured tool outputs, with retry-then-void fallback and signed receipts to block tampering",
-    ],
-    tech: [
-      "React Native",
-      "SpriteKit",
-      "SceneKit",
-      "Box2D",
-      "Convex",
-      "Sumsub",
-      "Anthropic API",
     ],
   },
 ];
